@@ -227,4 +227,53 @@ main {
 }
 
 /* [6] ABOUT TEXT */
+.about {
+    margin-block: 5rem 8rem;
+}
+.about-title {
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 69px;
+    text-align: center;
+}
+.about p {
+    margin-inline: 5rem;
+    font-size: 24px;
+    text-align: justify;
+}
 
+/* [7] FOOTER */
+.footer {
+    margin-bottom: 2rem;
+    margin-inline: 30rem;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.footer-item {
+    text-align: center;
+}
+
+.footer-item ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-item ul li {
+    margin-bottom: 5px;
+}
+
+.footer-item a {
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-item a:hover {
+    color: #ccc;
+}
