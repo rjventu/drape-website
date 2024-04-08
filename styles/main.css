@@ -56,13 +56,14 @@
     text-decoration: none;
 }
 .fi { /* icon */
-    font-size: 30px; /* adjust icon size */
+    font-size: 30px;
 }
 .bottom-link {
     margin-top: 16rem;
 }
 #active-icon {
     width: 30px;
+    padding-bottom: 0.8rem;
 }
 
 /* [3] Main */
@@ -208,7 +209,6 @@ main {
     overflow: hidden;
     margin: 0 0 3rem 2rem;
 }
-/* Underline styles */
 .btn-shop-hero::before {
     content: '';
     position: absolute;
@@ -261,9 +261,9 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     color: #fff;
     font-size: 18px;
     padding: 1.5rem;
