@@ -99,6 +99,42 @@ main {
     font-weight: 800;
     font-size: 120px;
 }
+.shop-hero {
+    background-image: url('/images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.shop-hero-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}    
+.shop-hero-text {
+    font-weight: 800;
+    font-size: 120px;
+    padding: 0 0 0 4rem;
+}
+.shop-hero-links {
+    margin-left: 3rem;
+}
+.hero-shop-cat {
+    background-image: url('/images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.hero-shop-cat-content {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
 
 /* [4] BUTTONS */
 .btn-hero {
@@ -159,6 +195,37 @@ main {
     transition: 0.1s ease;
 }
 .btn-gallery:hover::before {
+    height: 100%;
+}
+.btn-shop-hero {
+    font-size: 30px;
+    font-weight: 600;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 0 3rem 2rem;
+}
+/* Underline styles */
+.btn-shop-hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: height 0.1s ease;
+    z-index: -1;
+}
+.btn-shop-hero:hover {
+    text-decoration: none;
+    color: black;
+    transition: 0.1s ease;
+}
+.btn-shop-hero:hover::before {
     height: 100%;
 }
 
