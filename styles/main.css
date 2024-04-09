@@ -9,6 +9,8 @@
     [4] BUTTONS
     [5] GALLERY
     [6] ABOUT TEXT
+    [7] PROD DESC
+    [8] FOOTER
 
 /* 
 
@@ -49,11 +51,15 @@
 .sidebar-nav li {
     margin-bottom: 2rem;
 }
-.sidebar-nav a { /* change background on hover */
+.sidebar-nav a {
     display: block;
     padding: 10px;
     color: #fff;
     text-decoration: none;
+    transition: color 0.2 ease;
+}
+.sidebar-nav a:hover {
+    color: rgb(103, 203, 236);
 }
 .fi { /* icon */
     font-size: 30px;
@@ -68,7 +74,7 @@
 
 /* [3] Main */
 main {
-    margin-top: 3rem;
+    margin-block: 3rem;
     margin-inline: 11rem 6rem;
 }
 .hero {
@@ -138,6 +144,7 @@ main {
 }
 
 /* [4] BUTTONS */
+/* [4.1] GENERAL BUTTONS */
 .btn-hero {
     font-size: 30px;
     font-weight: 600;
@@ -149,7 +156,6 @@ main {
     overflow: hidden;
     margin: 0 4rem 3rem 0;
 }
-/* Underline styles */
 .btn-hero::before {
     content: '';
     position: absolute;
@@ -228,6 +234,61 @@ main {
 .btn-shop-hero:hover::before {
     height: 100%;
 }
+.btn-black {
+    font-size: 40px;
+    font-weight: 600;
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 4rem 3rem 0;
+}
+.btn-black::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    transition: height 0.1s ease;
+    z-index: -1;
+}
+.btn-black:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.1s ease;
+}
+.btn-black:hover::before {
+    height: 100%;
+}
+/* [4.2] SIZE OPTION BUTTONS */
+.size-options {
+    display: flex;
+}
+.size-option {
+    margin-right: 15px;
+}
+.size-option input[type="radio"] {
+    display: none; /* Hide the actual radio buttons */
+}
+.size-option span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.2rem 2rem;
+    background-color: #ccc;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.size-option input[type="radio"]:checked + span {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
 
 /* [5] GALLERY */
 .featured {
@@ -295,7 +356,7 @@ main {
 
 /* [6] ABOUT TEXT */
 .about {
-    margin-block: 5rem 8rem;
+    margin-block: 5rem 3rem;
 }
 .about-title {
     margin-bottom: 2rem;
@@ -309,7 +370,54 @@ main {
     text-align: justify;
 }
 
-/* [7] FOOTER */
+/* [7] PROD-DESC */
+.prod-main {
+    margin-block: 7rem;
+    margin-inline: 27rem 24rem;
+    display: flex;
+    justify-content: space-between;
+}
+.prod-right {
+    margin-top: 4rem;
+    width: 25rem;
+}
+.prod-left {
+    width: 35rem;
+}
+.prod-img {
+    max-height: 35rem;
+    overflow: hidden;
+}
+
+.prod-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.prod-desc-text {
+    margin-block: 3rem;
+    text-align: justify;
+    width: 35rem;
+    font-weight: 500;
+    font-size: 24px;
+}
+.prod-title {
+    font-weight: 700;
+    font-size:3.5rem;
+}
+.prod-price {
+    font-size: 2rem;
+    font-weight: 400;
+}
+.prod-size-header {
+    font-weight: 700;
+}
+.prod-info-text, .prod-size-sel {
+    margin-bottom: 5rem;
+}
+
+/* [8] FOOTER */
 .footer {
     margin-bottom: 2rem;
     margin-inline: 30rem;
