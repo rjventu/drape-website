@@ -9,6 +9,8 @@
     [4] BUTTONS
     [5] GALLERY
     [6] ABOUT TEXT
+    [7] FOOTER
+    [8] CONTACTS    
     [7] PROD DESC
     [8] FOOTER
 
@@ -451,4 +453,56 @@ main {
 
 .footer-item a:hover {
     color: #ccc;
+}
+
+/* [8] CONTACTS */
+
+.contacts .send {
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.contacts .send-content {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts .send-text {
+    padding: 0 0 3rem 4rem;
+}
+
+.contacts .send-text p {
+    font-size: 30px;
+}
+
+.contacts .send-text h1 {
+    font-weight: 800;
+    font-size: 120px;
+}
+
+.contacts h2 {
+    font-size: 50px;
+}
+
+.contacts .btn-send {
+    font-size: 30px;
+    font-weight: 600;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.contacts .social-links{ 
+    text-align: center;
+}
+
+.contacts .send-link{
+    display: inline-block;
 }
