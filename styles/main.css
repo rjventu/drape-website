@@ -12,6 +12,7 @@
     [7] PROD DESC
     [8] CONTACTS    
     [9] FOOTER
+    [10] CART/CHECKOUT RECEIPT
 
 /* 
 
@@ -357,7 +358,7 @@ main {
 
 /* [6] ABOUT TEXT */
 .about {
-    margin-block: 5rem 3rem;
+    margin-block: 5rem 5rem;
 }
 .about-title {
     margin-bottom: 2rem;
@@ -374,9 +375,14 @@ main {
 /* [7] PROD-DESC */
 .prod-main {
     margin-block: 7rem;
-    margin-inline: 27rem 24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prod-wrapper {
     display: flex;
     justify-content: space-between;
+    gap: 5rem;
 }
 .prod-right {
     margin-top: 4rem;
@@ -457,7 +463,7 @@ main {
 }
 
 /* [9] FOOTER */
-.footer {
+footer {
     margin-bottom: 2rem;
     margin-inline: 30rem;
 }
@@ -484,4 +490,82 @@ main {
 }
 .footer-item a:hover {
     color: #ccc;
+}
+footer p{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 1rem;
+}
+
+/* [10] CART/CHECKOUT RECEIPT */
+.cart-wrapper {
+    margin-block: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cart-title {
+    font-weight: 700;
+    font-size:3.5rem;
+    margin-bottom: 2rem;
+}
+.cart-table {
+    
+}
+.cart-item-img {
+    height: 5rem;
+    width: 5rem;
+    overflow: hidden;
+}
+.cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.cart-table-title {
+    font-weight: 700;
+
+}
+.cart-table-item-qty {
+    text-align: center;
+}
+.cart-table-item-price {
+    text-align: right;
+}
+.cart-table-item {
+    font-size: 24px;
+}
+.cart-table-total {
+    font-size: 27px;
+    font-weight: 700;
+}
+.cart-table-item-name {
+    padding-left: 2rem;
+}
+.cart-table-total {
+    padding-top: 1rem;
+}
+.cart-table-item-qty, .cart-table-item-price {
+    padding-inline: 5rem 2rem;
+}
+.cart-table-img, .cart-table-item-name, .cart-table-item-qty, .cart-table-item-price {
+    padding-block: 2rem;
+}
+hr { /* Line under cart items */
+    height: 3px;
+    border: none;
+    background-color: #000;
+}
+.below-rc {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.cart-total {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 2rem;
+    margin-top: 1rem;
 }
