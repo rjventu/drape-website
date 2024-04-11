@@ -397,16 +397,15 @@ button {
     width: 35rem;
 }
 .prod-img {
+    max-width: 35rem;
     max-height: 35rem;
     overflow: hidden;
 }
-
 .prod-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 35rem;
+    height: 35rem;
+    object-fit: cover;
 }
-
 .prod-desc-text {
     margin-block: 3rem;
     text-align: justify;
