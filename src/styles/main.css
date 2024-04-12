@@ -48,8 +48,8 @@
 .sidebar-nav ul {
     padding: 0;
     list-style-type: none;
-    margin: 2rem 0 2rem 0;
-    height: 100%;
+    margin-top: 2rem;
+    height: 100vh;
 }
 .sidebar-nav li {
     margin-bottom: 2rem;
@@ -67,9 +67,6 @@
 .fi { /* icon */
     font-size: 30px;
 }
-.bottom-link {
-    margin-top: 16rem;
-}
 #active-icon {
     width: 30px;
     padding-bottom: 0.8rem;
@@ -81,7 +78,7 @@ main {
     margin-inline: 11rem 6rem;
 }
 .hero {
-    background-image: url('../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
+    background-image: url('../../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
     background-size: cover;
     background-position: center;
     height: 25rem;
@@ -110,7 +107,7 @@ main {
     font-size: 120px;
 }
 .shop-hero {
-    background-image: url('../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
+    background-image: url('../../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
     background-size: cover;
     background-position: center;
     height: 25rem;
@@ -132,7 +129,7 @@ main {
     margin-left: 3rem;
 }
 .hero-shop-cat {
-    background-image: url('../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
+    background-image: url('../../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
     background-size: cover;
     background-position: center;
     height: 25rem;
@@ -454,7 +451,8 @@ button {
 .contactinfo .btn-black{ 
     text-align: center;
     font-size: 24px;
-    margin: 0;
+    width: fit-content;
+    margin: 0 0.5rem 0 0.5rem;
 }
 
 .contactinfo h2{

@@ -1,62 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drape </title>
-
-    <!-- BOOTSRAP CSS -->
-    <script scart="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script scart="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script scart="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- ICON LIBRARY -->
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-
-    <!-- CSS STYLESHEET LINK -->
-    <link rel="stylesheet" href="styles/main.css">
-</head>
+<!-- HEAD TAGS -->
+<?php include("../head-tags.php")?>
 
 <body>
 
     <!-- SIDEBAR -->
-    <div class="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="nav flex-column">
-                <div class="top-links">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fi fi-rr-home"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="shop.html">
-                            <i class="fi fi-rr-apps"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacts.html">
-                            <i class="fi fi-rr-phone-call"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="cart.html">
-                            <img src="active icon/shopping-cart.png" id="active-icon">
-                        </a>
-                    </li>
-                </div>
-                <div class="bottom-link">
-                   <li class="nav-item bottom-link">
-                    <a class="nav-link" href="#">
-                        <i class="fi fi-rr-user"></i>
-                    </a>
-                </li> 
-                </div>
-            </ul>
-        </nav>
-    </div>
+    <?php include("../sidebar.php")?>
 
     <!-- MAIN CONTENT -->
     <main class="main-checkout">
@@ -148,32 +99,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-links">
-            <div class="footer-item">
-                <ul>
-                    <li><a href="#">LINK 1</a></li>
-                    <li><a href="#">LINK 2</a></li>
-                    <li><a href="#">LINK 3</a></li>
-                </ul>
-            </div>
-            <div class="footer-item">
-                <ul>
-                    <li><a href="shop-category-shirts.html">SHIRTS</a></li>
-                    <li><a href="shop-category-hoodies.html">HOODIES</a></li>
-                    <li><a href="shop-category-acc.html">ACCESSORIES</a></li>
-                </ul>
-            </div>
-            <div class="footer-item">
-                <ul>
-                    <li><a href="#">PRIVACY POLICY</a></li>
-                    <li><a href="#">RETURN POLICY</a></li>
-                    <li><a href="#">TERMS OF SERVICE</a></li>
-                </ul>
-            </div>
-        </div>
-        <p>&copy; 2024 Drape. All Rights Reserved.</p>
-    </footer>
+    <?php include("footer.php")?>
     
 </body>
 
