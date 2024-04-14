@@ -1,50 +1,10 @@
 /*  TABLE OF CONTENTS
 
-    [0] BUTTONS
     [1] SIDEBAR
     [2] ADMIN AND CLIENT PANELS
     [3] TABLE
 
 /* 
-
-/* [0] BUTTONS */
-
-.btn-black-active {
-  font-size: 40px;
-  font-weight: 600;
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  background-color: #000000;
-  padding-left: 10px;
-  padding-right: 10px;
-  /* margin: 0 4rem 3rem 0; */
-}
-
-.btn-black-active::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  transition: height 0.1s ease;
-  z-index: -1;
-}
-
-.btn-black-active:hover {
-  text-decoration: none;
-  color: black;
-  transition: 0.1s ease;
-}
-
-.btn-black-active:hover::before {
-  height: 97%;
-}
 
 /* [1] SIDEBAR */
 
@@ -95,6 +55,12 @@
   outline: none;
   border-color: rgb(0, 0, 0);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(55, 55, 55, 0.6);
+}
+
+.search-bar input[type=submit]:focus{
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 .search-bar input:last-of-type{

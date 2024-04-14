@@ -14,6 +14,7 @@
     [9] FOOTER
     [10] CART
     [11] CHECKOUT
+    [12] LOGIN AND REGISTRATION
 
 /* 
 
@@ -75,7 +76,7 @@
 /* [3] Main */
 main {
     margin-block: 3rem;
-    margin-inline: 11rem 6rem;
+    margin-inline: 12rem 6rem;
 }
 .hero {
     background-image: url('../../images/xuan-thu-le-2OXNxfTt3kQ-unsplash.jpg');
@@ -243,8 +244,8 @@ main {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    /* padding-left: 0.5rem;
+    padding-right: 0.5rem; */
     /* margin: 0 4rem 3rem 0; */
 }
 .btn-black::before {
@@ -266,6 +267,43 @@ main {
 .btn-black:hover::before {
     height: 100%;
 }
+.btn-black-active {
+    font-size: 40px;
+    font-weight: 600;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #000000;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+    /* margin: 0 4rem 3rem 0; */
+}
+
+  .btn-black-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: height 0.1s ease;
+    z-index: -1;
+}
+
+.btn-black-active:hover {
+    text-decoration: none;
+    color: black;
+    transition: 0.1s ease;
+}
+  
+.btn-black-active:hover::before {
+    height: 97%;
+}
+
 /* [4.2] SIZE OPTION BUTTONS */
 .size-options {
     display: flex;
@@ -454,7 +492,7 @@ button {
     text-align: center;
     font-size: 24px;
     width: fit-content;
-    margin: 0 0.5rem 0 0.5rem;
+    padding: 0;
 }
 
 .contactinfo h2{
@@ -645,4 +683,29 @@ hr { /* Line under cart items */
 }
 .check-below {
     margin: 2rem 0 0 2rem;
+}
+
+/* [12] LOGIN AND REGISTRATION */
+
+.profile-picture{
+    width: 12rem;
+    height: 12rem;
+}
+
+.login-wrapper form{
+    width: 20rem;
+    text-align: center;
+}
+
+.login-wrapper .col{
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-logreg-major{
+    font-size: 34px;
+}
+
+.btn-logreg-minor{
+    font-size: 24px;
 }

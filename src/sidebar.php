@@ -79,7 +79,7 @@ $cart_pages = array(
       </div>
       <div class="bottom-links">
         <li class="nav-item bottom-links">
-          <a class="nav-link d-flex" href="#">
+          <a class="nav-link d-flex" href="login.php">
             <i class="fi fi-rr-user"></i>
           </a>
         </li> 

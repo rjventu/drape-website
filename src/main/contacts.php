@@ -20,7 +20,6 @@
             <div class="col-md-6">
               <!-- FORM -->
               <form>
-                
                 <div class="row">
                   <div class="form-group col">
                     <input type="text" class="form-control" placeholder="First name" required>
@@ -73,7 +72,7 @@
                     <div class="row d-flex justify-content-center mb-3">
                       <a class="btn-black" href="https://www.facebook.com/DrapeClothing11" target="_blank"> 
                         FACEBOOK ></a> 
-                      <a class="btn-black ml-4" href="https://www.instagram.com/drape.clothing/" target="_blank">
+                      <a class="btn-black ms-3" href="https://www.instagram.com/drape.clothing/" target="_blank">
                         INSTAGRAM ></a> 
                     </div>
                     <h4>SOCIALS</h4>
