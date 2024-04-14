@@ -17,11 +17,11 @@ $cart_pages = array(
     <ul class="nav flex-column justify-content-between">
       <div class="top-links">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="index.php">
+          <a class="nav-link d-flex" aria-current="page" href="index.php">
             <?php
               if($page == 'index.php'){
                 ?>
-                <img src="../../active/home.png" id="active-icon">
+                <img src="../../icons/home.png" id="active-icon">
                 <?php
               }else{
                 ?>
@@ -32,11 +32,11 @@ $cart_pages = array(
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="shop.php">
+          <a class="nav-link d-flex" href="shop.php">
             <?php
               if(in_array($page, $shop_pages)){
                 ?>
-                <img src="../../active/apps.png" id="active-icon">
+                <img src="../../icons/apps.png" id="active-icon">
                 <?php
               }else{
                 ?>
@@ -47,11 +47,11 @@ $cart_pages = array(
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contacts.php">
+          <a class="nav-link d-flex" href="contacts.php">
             <?php
               if($page == 'contacts.php'){
                 ?>
-                <img src="../../active/phone-call.png" id="active-icon">
+                <img src="../../icons/phone-call.png" id="active-icon">
                 <?php
               }else{
                 ?>
@@ -62,11 +62,11 @@ $cart_pages = array(
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cart.php">
+          <a class="nav-link d-flex" href="cart.php">
             <?php
               if(in_array($page, $cart_pages)){
                 ?>
-                <img src="../../active/shopping-cart.png" id="active-icon">
+                <img src="../../icons/shopping-cart.png" id="active-icon">
                 <?php
               }else{
                 ?>
@@ -79,7 +79,7 @@ $cart_pages = array(
       </div>
       <div class="bottom-links">
         <li class="nav-item bottom-links">
-          <a class="nav-link" href="#">
+          <a class="nav-link d-flex" href="#">
             <i class="fi fi-rr-user"></i>
           </a>
         </li> 

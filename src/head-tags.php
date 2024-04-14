@@ -12,4 +12,5 @@
 
     <!-- CSS STYLESHEET LINK -->
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/panels.css">
 </head>
