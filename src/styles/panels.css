@@ -3,6 +3,7 @@
     [1] SIDEBAR
     [2] ADMIN AND CLIENT PANELS
     [3] TABLE
+    [4] CLIENT VIEW ORDER
 
 /* 
 
@@ -134,4 +135,69 @@
 
 .ptb-username{
   text-transform: none;
+}
+
+/* [4] CLIENT VIEW ORDER */
+.view-order-wrapper{
+  margin-bottom: 5rem;
+}
+
+.view-order-back button{
+  font-size: 26px;
+}
+
+.view-order-left{
+  padding: 0 8rem;
+}
+
+.order-items-header{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.order-items-table{
+  font-size: 26px;
+}
+
+.oit-head{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.oit-body{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.oit-total{
+  font-weight: 900;
+}
+
+.od-name h1{
+  font-weight: bold;
+}
+
+.od-name h2{
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.od-contact, .od-address{
+  font-size: 28px;
+  margin-top: 1rem;
+}
+
+.od-address{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.order-details p{
+  margin-bottom: 0;
+}
+
+.order-details{
+  padding-left: 3rem;
+  height: fit-content;
+  border-left: 3px solid black;
 }

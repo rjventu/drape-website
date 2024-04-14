@@ -12,7 +12,7 @@
   <!--MAIN CONTENT -->
   <main>
 
-    <!-- LOGIN FORM -->
+    <!-- REGISTRATION FORM -->
     <section class="login-wrapper">
       <div class="row">
         <div class="col d-flex mt-5 text-center">
@@ -32,7 +32,7 @@
       </div>
       <div class="row">
         <div class="col d-flex">
-          <button type="button" class="btn-black btn-logreg-minor" onclick="history.back();">BACK ></button>
+          <button type="button" class="btn-black btn-logreg-minor" onclick="history.back();">< BACK</button>
         </div>
       </div>
     </section>

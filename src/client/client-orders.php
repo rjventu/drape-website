@@ -48,7 +48,7 @@
 
               <!-- Table Body -->
               <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
+                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-view-order.php';">
                   <div class="row">
                     <p class="col-4 mb-0">134</p>
                     <p class="col mb-0">45000 PHP</p>
@@ -58,7 +58,7 @@
               </div>
 
               <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
+                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-view-order.php';">
                   <div class="row">
                     <p class="col-4 mb-0">122</p>
                     <p class="col mb-0">6000 PHP</p>
@@ -68,7 +68,7 @@
               </div>
               
               <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
+                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-view-order.php';">
                   <div class="row">
                     <p class="col-4 mb-0">4</p>
                     <p class="col mb-0">250 PHP</p>

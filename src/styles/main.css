@@ -508,7 +508,8 @@ button {
 /* [9] FOOTER */
 footer {
     margin-bottom: 2rem;
-    margin-inline: 30rem;
+    /* margin-inline: 30rem; */
+    margin-inline: 26rem 20rem;
 }
 .footer-links {
     display: grid;

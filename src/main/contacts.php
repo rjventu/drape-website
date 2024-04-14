@@ -17,7 +17,7 @@
         <div class="container">
           <h2><b>CONTACT US!</b></h2> <br>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
               <!-- FORM -->
               <form>
                 <div class="row">
