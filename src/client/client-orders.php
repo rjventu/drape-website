@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(!isset($_SESSION["custId"])){
+  header("location: ../main/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +14,7 @@
 <body>
 
     <!-- SIDEBAR -->
-    <?php include("../sidebar-client.php")?>
+    <?php include("../sidebar.php")?>
 
     <!-- MAIN CONTENT -->
     <main class="client-wrapper">
@@ -16,7 +23,7 @@
         <section class="user-info mb-5">
           <div class="row">
             <div class="col d-flex justify-content-between">
-              <h1>laylaconsumer</h1>
+              <h1><?=$_SESSION["custUser"]?></h1>
             </div>
           </div>
         </section>

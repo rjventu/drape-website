@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION["adminId"])){
+  header("location: ../main/login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +15,7 @@
 <body>
 
     <!-- SIDEBAR -->
-    <?php include("../sidebar-admin.php")?>
+    <?php include("../sidebar.php")?>
 
     <!-- MAIN CONTENT -->
     <main class="admin-wrapper">
@@ -16,8 +24,8 @@
         <section class="user-info mb-5">
           <div class="row">
             <div class="col d-flex justify-content-between">
-              <h1>aishaalhadi</h1>
-              <a href="#" class="btn-black">CREATE NEW ADMIN ></a>
+              <h1><?php echo $_SESSION["adminUser"]?></h1>
+              <a href="admin-registration.php" class="btn-black">CREATE NEW ADMIN ></a>
             </div>
           </div>
         </section>

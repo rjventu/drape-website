@@ -1,4 +1,4 @@
-<?php include("includes/registration.inc.php")?>
+<?php include("includes/admin-registration.inc.php")?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
     <section class="login-wrapper">
       <div class="row">
         <div class="col d-flex mt-5 mb-2 text-center">
-          <h1><strong>CREATE A <br /> NEW ACCOUNT</strong></h1> 
+          <h1><strong>CREATE A NEW <br /> ADMIN ACCOUNT</strong></h1> 
         </div>
       </div>
       <div class="row status-messages my-2 d-flex">
@@ -37,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col d-flex my-3">
-          <form action="registration.php" method="post">
+          <form action="admin-registration.php" method="post">
             <input type="text" name="user" class="form-control" placeholder="Username" required>
             <input type="email" name="email" class="form-control mt-4" placeholder="Email" required>
             <input type="password" name="pass" class="form-control mt-4" placeholder="Password" required>
@@ -48,7 +48,7 @@
       </div>
       <div class="row">
         <div class="col d-flex">
-          <button type="button" class="btn-black btn-logreg-minor" onclick="window.location.href = 'login.php';">< BACK</button>
+          <button type="button" class="btn-black btn-logreg-minor" onclick="window.location.href = 'admin-inventory.php';">< BACK</button>
         </div>
       </div>
     </section>

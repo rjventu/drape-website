@@ -1,3 +1,12 @@
+<?php 
+
+session_start();
+if(!isset($_SESSION["custId"]) && !isset($_SESSION["adminId"])){
+    header("location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +17,36 @@
 
     <!-- SIDEBAR -->
     <?php include("../sidebar.php")?>
+    
+    <!-- ADMIN MESSAGE -->
+    <?php
+        if(isset($_SESSION["adminId"])){
+            ?>
+                <main>
+                    <div class="row" style="margin-top:10rem">
+                        <div class="col text-center my-5">
+                            <h1>Hello <?php echo $_SESSION["adminUser"]?>! 
+                                <br>
+                                <br> Please login using a 
+                                <br> Customer account to proceed.
+                            </h1>
+                        </div>
+                    </div>
+                </main>
+            <?php
+        }
+    ?>
 
     <!-- MAIN CONTENT -->
-    <main class="cart-wrapper">
+    <main class="cart-wrapper" 
+        <?php
+            if(isset($_SESSION["adminId"])){
+            ?>
+                style="display: none"
+            <?php
+            }
+        ?>
+    >
         <div>
             <h1 class="cart-title">YOUR CART</h1>
             <div class="cart">
@@ -52,7 +88,10 @@
     </main>
 
     <!-- FOOTER -->
-    <?php include("footer.php")?>
+    <?php
+        if (!isset($_SESSION["adminId"]))
+            include("footer.php")
+    ?>
     
 </body>
 
