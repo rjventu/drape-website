@@ -80,6 +80,20 @@ class Product extends Database{
     return "";
   }
 
+  protected function createStock($prod_id, $stock_size, $stock_qty){
+
+    $query = 'INSERT INTO product_stock (prod_id, stock_size, stock_qty) VALUES (?, ?, ?);';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($prod_id, $stock_size, $stock_qty))){
+      $stmt = null;
+      return "Error: Statement failed!";
+    }
+
+    $stmt = null;
+    return "";
+  }
+
   // protected function updateProduct($prod_name, $prod_price, $prod_description, $prod_main_image, $cat_name, $prod_id){
 
   //   $cat_id = $this->readCatId($cat_name);

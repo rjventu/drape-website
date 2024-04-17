@@ -41,6 +41,11 @@ class ProductController extends Product{
   public function addImage($prod_id, $img_name){
     $result = $this->createImg($prod_id, $img_name);
     return $result;
+  
+  }
+  public function addStock($prod_id, $stock_name, $stock_qty){
+    $result = $this->createStock($prod_id, $stock_name, $stock_qty);
+    return $result;
   }
 
 

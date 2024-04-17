@@ -76,41 +76,25 @@ $result = $product->getTable();
               </div>
 
               <!-- Table Body -->
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">1</p>
-                    <p class="col mb-0">Two Minutes Hoodie</p>
-                    <p class="col-3 mb-0 text-end">2000 PHP</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
 
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">2</p>
-                    <p class="col mb-0">Black Big Balls Tee</p>
-                    <p class="col-3 mb-0 text-end">750 PHP</p>
+              <?php
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                  echo 
+                  "
+                  <div class='row panel-table-body mb-4'>
+                    <div class='col ptb-contents-wrapper' onclick='#'>
+                      <div class='row'>
+                        <p class='col-2 mb-0'>" . $row["prod_id"] . "</p>
+                        <p class='col mb-0'>" . $row["prod_name"] . "</p>
+                        <p class='col-3 mb-0 text-end'>" . $row["prod_price"] . "</p>
+                      </div>
+                    </div>
+                    <div class='col-1 ptb-links'><a href='admin-product-edit.php?id=".$row["prod_id"]."'><i class='fi fi-rr-pencil'></i></a></div>
+                    <div class='col-1 ptb-links'><a href='admin-inventory.php?id=".$row["prod_id"]."'><i class='fi fi-rr-cross'></i></a></div>
                   </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">3</p>
-                    <p class="col mb-0">White Circle Lighthouse Tee</p>
-                    <p class="col-3 mb-0 text-end">700 PHP</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
+                  ";
+                }
+              ?>
 
             </div>
           </div>

@@ -55,14 +55,14 @@
               </div>
               <input type="text" name="prod_name" id="prod_name" class="form-control" placeholder="Graphic Tee - WHITE" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
               <div class="form-group-label d-flex justify-content-between">
                 <h5>PRICE (IN PHP)</h5>
                 <h6><i>required</i></h6>
               </div>
               <input type="number" name="prod_price" id="prod_price" class="form-control" placeholder="550.00" min="0" step="0.01" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
               <div class="form-group-label d-flex justify-content-between">
                 <h5>CATEGORY</h5>
                 <h6><i>required</i></h6>
@@ -74,17 +74,53 @@
                 <option value="Accessories">Accessories</option>
               </select>
             </div>
-          </div>
-
-          <!-- Right Side -->
-          <div class="col product-form-right d-flex flex-column justify-content-between px-5">
-            <div class="form-group">
+            <div class="form-group mt-3">
               <div class="form-group-label d-flex justify-content-between">
                 <h5>DESCRIPTION</h5>
               </div>
               <textarea name="prod_description" id="prod_description" class="form-control" placeholder="Max 500 characters" rows="3" maxlength="500"></textarea>
             </div>
-            <div class="form-group mt-4">
+          </div>
+
+          <!-- Right Side -->
+          <div class="col product-form-right d-flex flex-column px-5">
+            <div class="form-group">
+              <div class="form-group-label d-flex justify-content-between">
+                <h5>SIZES</h5>
+                <h6><i>required</i></h6>
+              </div>
+              <div class="row pform-sizes-wrapper">
+                <div class="col">
+                  <div class="pform-sizes d-flex">
+                    <h3>XS:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                  <div class="pform-sizes d-flex">
+                    <h3>S:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                  <div class="pform-sizes d-flex">
+                    <h3>M:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                </div>
+                <div class="col ps-5">
+                  <div class="pform-sizes d-flex">
+                    <h3>L:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                  <div class="pform-sizes d-flex">
+                    <h3>XL:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                  <div class="pform-sizes d-flex">
+                    <h3>XXL:</h3>
+                    <input type="number" name="stock[]" id="stock" class="form-control" value="0" min="0" step="0" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-5">
               <div class="form-group-label d-flex justify-content-between">
                 <h5>IMAGE (MAX 4)</h5>
                 <h6><i>required</i></h6>
@@ -92,8 +128,6 @@
               <div class="input-images"></div>
             </div>
           </div>
-          <!-- <input type="text" id="image_array_main" name="image_array_main" value="" hidden>
-          <input type="text" id="image_array_optional" name="image_array_optional" value="" hidden> -->
           <div class="row d-flex justify-content-end pe-5 mt-5">
             <button type="submit" name="submit" id="submit" class="btn-black" style="width:fit-content">ADD PRODUCT ></button>
           </div>
@@ -111,8 +145,8 @@
 
   $('.input-images').imageUploader({
     preloaded: preloaded,
-    imagesInputName: 'new',
-    preloadedInputName: 'old',
+    imagesInputName: 'photos',
+    preloadedInputName: 'photos',
     maxSize: 2 * 1024 * 1024,
     maxFiles: 4
   });  
