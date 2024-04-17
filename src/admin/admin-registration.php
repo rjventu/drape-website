@@ -1,3 +1,5 @@
+<?php include("includes/admin-session.inc.php")?>
+
 <?php include("includes/admin-registration.inc.php")?>
 
 <!DOCTYPE html>

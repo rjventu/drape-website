@@ -1,10 +1,4 @@
-<?php 
-session_start();
-
-if(!isset($_SESSION["adminId"])){
-  header("location: ../main/login.php");
-}
-?>
+<?php include("includes/admin-session.inc.php")?>
 
 <!DOCTYPE html>
 <html lang="en">

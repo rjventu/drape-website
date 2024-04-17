@@ -68,7 +68,7 @@
                         </label>
                     </div>
                 </div>
-                <a href="#" class="btn-black">ADD TO CART ></a>
+                <a href="cart.php" class="btn-black">ADD TO CART ></a>
             </div>
         </div>
 

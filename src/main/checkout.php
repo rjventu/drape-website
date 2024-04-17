@@ -42,7 +42,7 @@
                         <input type="email" id="email" placeholder="Email address" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="other" name="other" placeholder="Anything else to add?" class="form-control" rows="5"></textarea>
+                        <textarea id="other" name="other" placeholder="Anything else to add?" class="form-control" rows="5" maxlength="500"></textarea>
                     </div>
                 </form>                    
             </div>

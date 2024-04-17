@@ -16,7 +16,8 @@ $client_pages = array(
 );
 $admin_pages = array(
   "admin-inventory.php",
-  "admin-orders.php"
+  "admin-orders.php",
+  "admin-registration.php"
 );
 ?>
 

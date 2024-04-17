@@ -13,4 +13,7 @@
     <!-- CSS STYLESHEET LINK -->
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/panels.css">
+
+    <!-- DRAG-DROP-IMAGE-UPLOADER PLUGIN -->
+    <link type="text/css" rel="stylesheet" href="../../plugins/drag-drop/dist/image-uploader.min.css">
 </head>

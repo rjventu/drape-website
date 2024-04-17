@@ -1,9 +1,11 @@
-<?php 
-session_start();
+<?php include("includes/admin-session.inc.php")?>
 
-if(!isset($_SESSION["adminId"])){
-  header("location: ../main/login.php");
-}
+<?php
+include("../classes/Database.class.php");
+include("../classes/Product.class.php");
+include("../classes/ProductCon.class.php");
+$product = new ProductController();
+$result = $product->getTable();
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +54,7 @@ if(!isset($_SESSION["adminId"])){
                   <input type="submit" name="filter" value="">
                 </form>
               </div>
-              <a href="#" class="btn-black">ADD ITEM +</a>
+              <a href="admin-product-add.php" class="btn-black">ADD ITEM +</a>
             </div>
           </div>
 
