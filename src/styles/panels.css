@@ -1,0 +1,241 @@
+/*  TABLE OF CONTENTS
+
+    [1] SIDEBAR
+    [2] ADMIN AND CLIENT PANELS
+    [3] TABLE
+    [4] CLIENT VIEW ORDER
+    [5] PRODUCT FORM
+
+    [-] OTHERS
+
+/* 
+
+/* [1] SIDEBAR */
+
+.bottom-links #active-icon {
+  width: 40px;
+  /* width: 30px; */
+}
+
+.nav-link {
+  align-items: center;
+  justify-content: center;
+}
+
+/* [2] ADMIN AND CLIENT PANELS */
+
+.admin-wrapper,
+.client-wrapper{
+  margin-block: 3rem;
+  margin-inline: 17rem 12rem;
+}
+
+.user-info h1{
+  font-weight: bold;
+}
+
+.user-info .btn-black{
+  text-align: center;
+  font-size: 24px;
+  width: fit-content;
+  height: fit-content;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.search-bar input{
+  height: 100%;
+  font-size: 30px;
+}
+
+.search-bar input:first-of-type{
+  width: fit-content;
+  border: 3px solid black;
+  border-radius: 0;
+  padding: 0 0 0 1rem;
+  margin: 0 1rem 0 0;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: rgb(0, 0, 0);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(55, 55, 55, 0.6);
+}
+
+.search-bar input[type=submit]:focus{
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.search-bar input:last-of-type{
+  width: 3rem;
+  border: none;
+  background: url('../../icons/search.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.panel-table-wrapper .btn-black{
+  font-size: 30px;
+}
+
+/* [3] TABLE */
+
+.panel-table {
+  font-size: 26px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.search-row{
+  padding-left: 0.1rem;
+}
+
+.search-bar{
+  text-transform: none;
+}
+
+.panel-table-head,
+.panel-table-body{
+  padding-left: 1rem;
+}
+
+.panel-table-head{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ptb-links{
+  text-align: end;
+  padding-right: 0;
+}
+
+.ptb-links a{
+  text-decoration: none;
+  color: #000000;
+  transition: ease 0.2s;
+}
+
+.ptb-links a:hover{
+  transition: ease 0.2s;
+  color: rgb(103, 203, 236);
+}
+
+.ptb-contents-wrapper{
+  border: 3px solid black;
+  transition: ease-in-out 0.2s;
+}
+
+.ptb-contents-wrapper:hover{
+  border-color: rgb(0, 0, 0);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(55, 55, 55, 0.6);
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.ptb-username{
+  text-transform: none;
+}
+
+/* [4] CLIENT VIEW ORDER */
+.view-order-wrapper{
+  margin-bottom: 5rem;
+}
+
+.view-order-back button{
+  font-size: 26px;
+}
+
+.view-order-left{
+  padding: 0 8rem;
+}
+
+.order-items-header{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.order-items-table{
+  font-size: 26px;
+}
+
+.oit-head{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.oit-body{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.oit-total{
+  font-weight: 900;
+}
+
+.od-name h1{
+  font-weight: bold;
+}
+
+.od-name h2{
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.od-contact, .od-address{
+  font-size: 28px;
+  margin-top: 1rem;
+}
+
+.od-address{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.order-details p{
+  margin-bottom: 0;
+}
+
+.order-details{
+  padding-left: 3rem;
+  height: fit-content;
+  border-left: 3px solid black;
+}
+
+/* [5] PRODUCT FORM */
+
+.product-form-wrapper{
+  margin-bottom: 5rem;
+}
+
+.product-form-wrapper h5{
+  font-weight: bold;
+}
+
+.product-form-right{
+  border-left: 3px solid black;
+}
+
+.form-select{
+  width: 100%;
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 0;
+  transition: ease 0.2s;
+  padding: 0 0 0 0.5rem;
+}
+
+.form-select:focus {
+  border-color: rgb(0, 0, 0);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(55, 55, 55, 0.6);
+}
+
+/* [-] OTHERS */
+
+.status-messages{
+  justify-content: center;
+  align-items: center;
+}
