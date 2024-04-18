@@ -59,26 +59,6 @@ CREATE TABLE `cart_item` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
---
-
-CREATE TABLE `category` (
-  `cat_id` int(11) NOT NULL,
-  `cat_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
-(1, 'Shirts'),
-(2, 'Hoodies'),
-(3, 'Accessories');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customer`
 --
 
@@ -142,17 +122,17 @@ CREATE TABLE `product` (
   `prod_name` varchar(255) NOT NULL,
   `prod_price` decimal(5,2) NOT NULL,
   `prod_description` varchar(500) NOT NULL,
-  `cat_id` int(11) NOT NULL
+  `cat_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prod_id`, `prod_name`, `prod_price`, `prod_description`, `cat_id`) VALUES
-(1, 'Smiley & Daisy Tee - PINK', 549.00, 'Trendy tee in pink', 1),
-(2, 'Smiley & Daisy Hoodie - BROWN', 599.00, 'Trendy and comfy hoodie ', 2),
-(3, 'Smiley & Daisy Cap - Pink', 249.00, 'Trendy cap in pink', 3);
+INSERT INTO `product` (`prod_id`, `prod_name`, `prod_price`, `prod_description`, `cat_name`) VALUES
+(1, 'Smiley & Daisy Tee - PINK', 549.00, 'Trendy tee in pink', 'Shirts'),
+(2, 'Smiley & Daisy Hoodie - BROWN', 599.00, 'Trendy and comfy hoodie ', 'Hoodies'),
+(3, 'Smiley & Daisy Cap - Pink', 249.00, 'Trendy cap in pink', 'Accessories');
 
 -- --------------------------------------------------------
 
@@ -237,12 +217,6 @@ ALTER TABLE `cart_item`
   ADD KEY `stock_cart_fk` (`stock_id`);
 
 --
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`cat_id`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -265,8 +239,7 @@ ALTER TABLE `order_item`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`prod_id`),
-  ADD KEY `prod_cat_fk` (`cat_id`);
+  ADD PRIMARY KEY (`prod_id`);
 
 --
 -- Indexes for table `product_gallery`
@@ -291,12 +264,6 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -343,12 +310,6 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_cust_fk` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`);
-
---
--- Constraints for table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `prod_cat_fk` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`);
 
 --
 -- Constraints for table `product_gallery`

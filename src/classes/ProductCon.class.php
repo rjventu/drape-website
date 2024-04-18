@@ -25,11 +25,6 @@ class ProductController extends Product{
     return $result;
   }
 
-  public function getCatTable($cat_name){
-    $result = $this->readCatTable($cat_name);
-    return $result;
-  }
-
   public function getRecord($prod_id){
     $result = $this->readProductRecord($prod_id);
     return $result;
@@ -89,11 +84,6 @@ class ProductController extends Product{
 
   public function removeStockRecord(){
     return $this->deleteStockRecord($this->prod_id);
-  }
-
-  public function getCatName($cat_id){
-    $cat_name = $this->readCatName($cat_id);
-    return $cat_name;
   }
 
   // error handlers

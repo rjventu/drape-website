@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
   $prod_name = $row["prod_name"];
   $prod_price = $row["prod_price"];
   $prod_description = $row["prod_description"];
-  $cat_name = $product->getCatName($row["cat_id"]);
+  $cat_name = $row["cat_name"];
 
   // get images from db
   $img_array = $product->getRecordImg($prod_id);

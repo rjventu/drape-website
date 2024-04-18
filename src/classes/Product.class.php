@@ -16,12 +16,10 @@ class Product extends Database{
 
   protected function searchProductTable($phrase){
 
-    $phrase = strtoupper(trim($phrase," "));
-    
-    $phrase = "%".$phrase."%";    
+    $phrase = "%".trim($phrase," ")."%";    
 
     $query = "SELECT * FROM product 
-      WHERE CONCAT_WS(prod_id, prod_price, UPPER(prod_name)) LIKE UPPER(?)";
+      WHERE CONCAT_WS(prod_id, prod_price, UPPER(prod_name), UPPER(cat_name)) LIKE UPPER(?)";
       
     $stmt = $this->connect()->prepare($query);
 
@@ -34,22 +32,6 @@ class Product extends Database{
     return $stmt;
   }
   
-  protected function readCatTable($cat_name){
-
-    $cat_id = $this->readCatId($cat_name);
-
-    $query = 'SELECT * FROM product WHERE cat_id = ?;';
-    $stmt = $this->connect()->prepare($query);
-
-    if(!$stmt->execute(array($cat_id))){
-      $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
-      exit();
-    }
-
-    return $stmt;
-  }
-
   protected function readProductRecord($prod_id){
 
     $query = 'SELECT * FROM product WHERE prod_id = ?;';
@@ -108,15 +90,13 @@ class Product extends Database{
 
   protected function createProduct($prod_name, $prod_price, $prod_description, $cat_name){
 
-    $cat_id = $this->readCatId($cat_name);
-
-    $query = 'INSERT INTO product (prod_name, prod_price, prod_description, cat_id) VALUES (?, ?, ?, ?);';
+    $query = 'INSERT INTO product (prod_name, prod_price, prod_description, cat_name) VALUES (?, ?, ?, ?);';
 
     $dbh = $this->connect();
     $stmt = $dbh->prepare($query);
 
     $dbh->beginTransaction();
-    if(!$stmt->execute(array($prod_name, $prod_price, $prod_description, $cat_id))){
+    if(!$stmt->execute(array($prod_name, $prod_price, $prod_description, $cat_name))){
       $stmt = null;
       return "Error: Statement failed!";
     }
@@ -158,12 +138,10 @@ class Product extends Database{
 
   protected function updateProduct($prod_name, $prod_price, $prod_description, $cat_name, $prod_id){
 
-    $cat_id = $this->readCatId($cat_name);
-
-    $query = 'UPDATE product SET prod_name = ?, prod_price = ?, prod_description = ?, cat_id = ? WHERE prod_id = ?;';
+    $query = 'UPDATE product SET prod_name = ?, prod_price = ?, prod_description = ?, cat_name = ? WHERE prod_id = ?;';
     $stmt = $this->connect()->prepare($query);
 
-    if(!$stmt->execute(array($prod_name, $prod_price, $prod_description, $cat_id, $prod_id))){
+    if(!$stmt->execute(array($prod_name, $prod_price, $prod_description, $cat_name, $prod_id))){
       $stmt = null;
       return "Error: Statement failed!";
     }
@@ -236,31 +214,4 @@ class Product extends Database{
     return "";
   }
 
-  private function readCatId($cat_name){
-    $query = 'SELECT cat_id FROM category WHERE cat_name = ?;';
-    $stmt = $this->connect()->prepare($query);
-
-    if(!$stmt->execute(array($cat_name))){
-      $stmt = null;
-      return "Error: Statement failed!";
-    }
-
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-      return $row["cat_id"];
-    }
-  }
-
-  protected function readCatName($cat_id){
-    $query = 'SELECT cat_name FROM category WHERE cat_id = ?;';
-    $stmt = $this->connect()->prepare($query);
-
-    if(!$stmt->execute(array($cat_id))){
-      $stmt = null;
-      return "Error: Statement failed!";
-    }
-
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-      return $row["cat_name"];
-    }
-  }
 }
