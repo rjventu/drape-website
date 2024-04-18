@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 03:04 PM
+-- Generation Time: Apr 18, 2024 at 04:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,8 @@ SET time_zone = "+08:00";
 --
 -- Database: `drape`
 --
+CREATE DATABASE IF NOT EXISTS `drape` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `drape`;
 
 -- --------------------------------------------------------
 
@@ -143,6 +145,15 @@ CREATE TABLE `product` (
   `cat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`prod_id`, `prod_name`, `prod_price`, `prod_description`, `cat_id`) VALUES
+(1, 'Smiley & Daisy Tee - PINK', 549.00, 'Trendy tee in pink', 1),
+(2, 'Smiley & Daisy Hoodie - BROWN', 599.00, 'Trendy and comfy hoodie ', 2),
+(3, 'Smiley & Daisy Cap - Pink', 249.00, 'Trendy cap in pink', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +165,21 @@ CREATE TABLE `product_gallery` (
   `img_name` varchar(255) NOT NULL,
   `prod_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_gallery`
+--
+
+INSERT INTO `product_gallery` (`img_id`, `img_name`, `prod_id`) VALUES
+(1, '662129c64c687_Smiley&Daisy_Tee_Hoodie_front.jpg', 1),
+(2, '662129c64c68c_Smiley&Daisy_Tee_Hoodie_back.jpg', 1),
+(3, '662129c64c68d_Size Chart.jpg', 1),
+(4, '662129e51d890_Smiley&Daisy_Tee_Pink_front.jpg', 2),
+(5, '662129e51d89c_Smiley&Daisy_Tee_Pink_back.jpg', 2),
+(6, '662129e51d89d_Smiley&DaisyTee_model.jpg', 2),
+(7, '662129e51d89e_Size Chart.jpg', 2),
+(8, '66212a57bf8bb_Smiley&DaisyCap_Pink.jpg', 3),
+(9, '66212a57bf8bf_Smiley&DaisyTee_model.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -167,6 +193,30 @@ CREATE TABLE `product_stock` (
   `stock_size` varchar(50) NOT NULL,
   `stock_qty` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_stock`
+--
+
+INSERT INTO `product_stock` (`stock_id`, `prod_id`, `stock_size`, `stock_qty`) VALUES
+(1, 1, 'XS', 10),
+(2, 1, 'S', 12),
+(3, 1, 'M', 5),
+(4, 1, 'L', 6),
+(5, 1, 'XL', 2),
+(6, 1, 'XXL', 0),
+(7, 2, 'XS', 0),
+(8, 2, 'S', 5),
+(9, 2, 'M', 2),
+(10, 2, 'L', 4),
+(11, 2, 'XL', 6),
+(12, 2, 'XXL', 3),
+(13, 3, 'XS', 0),
+(14, 3, 'S', 0),
+(15, 3, 'M', 20),
+(16, 3, 'L', 0),
+(17, 3, 'XL', 0),
+(18, 3, 'XXL', 0);
 
 --
 -- Indexes for dumped tables
@@ -270,19 +320,19 @@ ALTER TABLE `order_item`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_gallery`
 --
 ALTER TABLE `product_gallery`
-  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
 --
 ALTER TABLE `product_stock`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

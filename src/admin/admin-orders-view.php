@@ -1,7 +1,9 @@
-<?php session_start();?>
+<?php include("includes/admin-session.inc.php")?>
 
-<?php $order_status = "Pending" ?>
-
+<?php
+// this is just a placeholder
+$order_status = "Pending";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +19,7 @@
     <main>
 
       <section class="view-order-back">
-        <button type="button" class="btn-black" onclick="history.back();">< BACK</button>
+        <button type="button" class="btn-black" onclick="window.location.href = 'admin-orders.php';">< BACK</button>
       </section>
 
       <!-- ORDER INFO -->
@@ -95,16 +97,21 @@
               <p>at region, at country,</p>
               <p> plus zip code</p>
             </div>
-            <div class="row od-status">
+            <form class="row od-status">
               <div class="form-group">
                 <div class="form-group-label d-flex">
                   <h5><strong>STATUS</strong></h5>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <p>Pending</p>
+                <div class="od-status-input d-flex justify-content-between align-items-center">
+                  <select name="order_status" id="order_status" class="form-select" disabled>
+                    <option value="Pending"<?=$order_status == 'Pending' ? ' selected="selected"' : '';?>>Pending</option>
+                    <option value="Paid"<?=$order_status == 'Paid' ? ' selected="selected"' : '';?>>Paid</option>
+                    <option value="Shipped"<?=$order_status == 'Shipped' ? ' selected="selected"' : '';?>>Shipped</option>
+                    <option value="Delivered"<?=$order_status == 'Delivered' ? ' selected="selected"' : '';?>>Delivered</option>
+                  </select>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>

@@ -27,3 +27,9 @@ if(isset($_GET['id'])){
   $product = new ProductController();
   $result = $product->getTable();
 }
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+  // search bar
+  $product = new ProductController();
+  $result = $product->getSearchTable($_POST['search_item']);
+}

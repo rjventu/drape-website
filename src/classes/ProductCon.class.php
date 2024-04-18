@@ -20,6 +20,11 @@ class ProductController extends Product{
     return $result;
   }
 
+  public function getSearchTable($phrase){
+    $result = $this->searchProductTable($phrase);
+    return $result;
+  }
+
   public function getCatTable($cat_name){
     $result = $this->readCatTable($cat_name);
     return $result;

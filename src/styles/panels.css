@@ -5,6 +5,7 @@
     [3] TABLE
     [4] CLIENT VIEW ORDER
     [5] PRODUCT FORM
+    [6] ORDER FORM
 
     [-] OTHERS
 
@@ -246,6 +247,36 @@
 
 .pform-sizes input{
   width: 10rem;
+}
+
+.input-images-custom{
+  border: 2px solid black;
+  height: 7rem;
+  width: 100%;
+  margin-left: 0;
+  background-color: rgb(233, 236, 239);
+}
+
+.custom-img-wrapper{
+  height: 5rem;
+  width: 5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* [6] ORDER FORM */
+
+#order_status{
+  width: 70%;
+}
+
+.od-status button{
+  font-size: 26px;
+}
+
+.od-status p{
+  font-size: 26px;
 }
 
 /* [-] OTHERS */

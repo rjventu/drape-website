@@ -104,7 +104,17 @@
               <div class="form-group-label d-flex justify-content-between">
                 <h5>IMAGE (MAX 4)</h5>
               </div>
-              <div class="input-images"></div>
+              <div class="row input-images-custom">
+                <div class="col d-flex justify-content-start align-items-center">
+                  <?php
+                  foreach($img_array as $img){
+                    ?>
+                    <div class="custom-img-wrapper mx-2" style="background-image: url('<?php echo $img?>');"></div>
+                    <?php
+                  }
+                  ?>
+                </div>
+              </div>
             </div>
           </div>
         </form>

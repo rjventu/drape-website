@@ -13,6 +13,26 @@ class Product extends Database{
 
     return $stmt;
   }
+
+  protected function searchProductTable($phrase){
+
+    $phrase = strtoupper(trim($phrase," "));
+    
+    $phrase = "%".$phrase."%";    
+
+    $query = "SELECT * FROM product 
+      WHERE CONCAT_WS(prod_id, prod_price, UPPER(prod_name)) LIKE UPPER(?)";
+      
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($phrase))){
+      $stmt = null;
+      header("location: ../index.php?error=stmtfailed");
+      exit();
+    }
+
+    return $stmt;
+  }
   
   protected function readCatTable($cat_name){
 

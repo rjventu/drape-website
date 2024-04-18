@@ -43,7 +43,7 @@
           <div class="row search-row">
             <div class="col d-flex justify-content-between align-items-center">
               <div class="search-bar">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="admin-inventory.php" method="post" enctype="multipart/form-data">
                   <input type="text" name="search_item" placeholder="SEARCH/FILTER...">
                   <input type="submit" name="filter" value="">
                 </form>
