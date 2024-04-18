@@ -150,7 +150,8 @@
                 let $preloaded = $('<input>', {
                     type: 'hidden',
                     name: plugin.settings.preloadedInputName + '[]',
-                    value: id
+                    id: 'preloadedID',
+                    value: src
                 }).appendTo($container)
 
             } else {

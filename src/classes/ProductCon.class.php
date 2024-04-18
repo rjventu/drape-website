@@ -20,6 +20,11 @@ class ProductController extends Product{
     return $result;
   }
 
+  public function getSearchTable($phrase){
+    $result = $this->searchProductTable($phrase);
+    return $result;
+  }
+
   public function getCatTable($cat_name){
     $result = $this->readCatTable($cat_name);
     return $result;
@@ -27,6 +32,16 @@ class ProductController extends Product{
 
   public function getRecord($prod_id){
     $result = $this->readProductRecord($prod_id);
+    return $result;
+  }
+
+  public function getRecordImg($prod_id){
+    $result = $this->readProductImg($prod_id);
+    return $result;
+  }
+  
+  public function getRecordStock($prod_id){
+    $result = $this->readProductStock($prod_id);
     return $result;
   }
 
@@ -41,26 +56,39 @@ class ProductController extends Product{
   public function addImage($prod_id, $img_name){
     $result = $this->createImg($prod_id, $img_name);
     return $result;
+  
+  }
+  public function addStock($prod_id, $stock_name, $stock_qty){
+    $result = $this->createStock($prod_id, $stock_name, $stock_qty);
+    return $result;
   }
 
+  public function editProduct(){
+    if($this->invalidName()){
+      return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";
+    }
+    return $this->updateProduct($this->prod_name, $this->prod_price, $this->prod_description, $this->cat_name, $this->prod_id);
+  }
 
+  public function editStock($stock_qty, $prod_id, $stock_size){
+    return $this->updateStock($stock_qty, $prod_id, $stock_size);
+  }
 
-  // public function editProduct(){
-  //   if($this->invalidName()){
-  //     return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";
-  //   }
-  //   return $this->updateProduct($this->prod_name, $this->prod_price, $this->prod_description, $this->prod_image, $this->prod_image_file, $this->bestseller, $this->cat_name, $this->prod_id);
-  // }
-
-  // public function editProductNoImg(){
-  //   if($this->invalidName()){
-  //     return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";
-  //   }
-  //   return $this->updateProductNoImg($this->prod_name, $this->prod_price, $this->prod_description, $this->bestseller, $this->cat_name, $this->prod_id);
-  
-  // }
   public function removeRecord(){
     return $this->deleteProductRecord($this->prod_id);
+  }
+
+  public function removeImage($img_name){
+    $result = $this->deleteImg($img_name);
+    return $result;
+  }
+
+  public function removeImgRecord(){
+    return $this->deleteImgRecord($this->prod_id);
+  }
+
+  public function removeStockRecord(){
+    return $this->deleteStockRecord($this->prod_id);
   }
 
   public function getCatName($cat_id){

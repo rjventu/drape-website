@@ -17,6 +17,11 @@ $client_pages = array(
 $admin_pages = array(
   "admin-inventory.php",
   "admin-orders.php",
+  "admin-orders-edit.php",
+  "admin-orders-view.php",
+  "admin-product-add.php",
+  "admin-product-edit.php",
+  "admin-product-view.php",
   "admin-registration.php"
 );
 ?>

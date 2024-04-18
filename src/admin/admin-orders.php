@@ -67,36 +67,14 @@
 
               <!-- Table Body -->
               <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
+                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'admin-orders-view.php';">
                   <div class="row">
                     <p class="col-2 mb-0">653</p>
-                    <p class="col mb-0 ptb-username">AmishKapoor</p>
-                    <p class="col-3 mb-0 text-end">EN-ROUTE</p>
+                    <p class="col mb-0 ptb-username">JustAPlaceholder</p>
+                    <p class="col-3 mb-0 text-end">Shipped</p>
                   </div>
                 </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">313</p>
-                    <p class="col mb-0 ptb-username">ReigleighHigginbottom</p>
-                    <p class="col-3 mb-0 text-end">EN-ROUTE</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">51</p>
-                    <p class="col mb-0 ptb-username">LuceaDeCortez</p>
-                    <p class="col-3 mb-0 text-end">SHIPPING</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
+                <div class="col-1 ptb-links"><a href="admin-orders-edit.php"><i class="fi fi-rr-pencil"></i></a></div>
               </div>
 
             </div>

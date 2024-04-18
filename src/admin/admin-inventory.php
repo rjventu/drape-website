@@ -1,12 +1,6 @@
 <?php include("includes/admin-session.inc.php")?>
 
-<?php
-include("../classes/Database.class.php");
-include("../classes/Product.class.php");
-include("../classes/ProductCon.class.php");
-$product = new ProductController();
-$result = $product->getTable();
-?>
+<?php include("includes/admin-inventory.inc.php")?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +43,7 @@ $result = $product->getTable();
           <div class="row search-row">
             <div class="col d-flex justify-content-between align-items-center">
               <div class="search-bar">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="admin-inventory.php" method="post" enctype="multipart/form-data">
                   <input type="text" name="search_item" placeholder="SEARCH/FILTER...">
                   <input type="submit" name="filter" value="">
                 </form>
@@ -76,41 +70,28 @@ $result = $product->getTable();
               </div>
 
               <!-- Table Body -->
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">1</p>
-                    <p class="col mb-0">Two Minutes Hoodie</p>
-                    <p class="col-3 mb-0 text-end">2000 PHP</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
 
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">2</p>
-                    <p class="col mb-0">Black Big Balls Tee</p>
-                    <p class="col-3 mb-0 text-end">750 PHP</p>
+              <?php
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                  echo 
+                  "
+                  <div class='row panel-table-body mb-4'>"; ?>
+                    <div class='col ptb-contents-wrapper' onclick="window.location.href = 'admin-product-view.php?id=<?php echo $row['prod_id']?>';">
+                      <?php echo "
+                      <div class='row'>
+                        <p class='col-2 mb-0'>" . $row["prod_id"] . "</p>
+                        <p class='col mb-0'>" . $row["prod_name"] . "</p>
+                        <p class='col-3 mb-0 text-end'>" . $row["prod_price"] . "</p>
+                      </div>
+                    </div>";
+                    ?>
+                    <div class='col-1 ptb-links'><a href='admin-product-edit.php?id=<?php echo $row["prod_id"];?>'><i class='fi fi-rr-pencil'></i></a></div>
+                    <div class='col-1 ptb-links'><a href='admin-inventory.php?id=<?php echo $row["prod_id"];?>' onclick="return confirm('Are you sure you want to delete this product?');"><i class='fi fi-rr-cross'></i></a></div>
+                    <?php echo "
                   </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="alert('you clicked me')">
-                  <div class="row">
-                    <p class="col-2 mb-0">3</p>
-                    <p class="col mb-0">White Circle Lighthouse Tee</p>
-                    <p class="col-3 mb-0 text-end">700 PHP</p>
-                  </div>
-                </div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-pencil"></i></a></div>
-                <div class="col-1 ptb-links"><a href="#"><i class="fi fi-rr-cross"></i></a></div>
-              </div>
+                  ";
+                }
+              ?>
 
             </div>
           </div>
