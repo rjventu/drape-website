@@ -28,3 +28,24 @@ function deleteFile($image_old){
     }
   }
 }
+
+function prepareArray($array){
+  foreach($array as &$element){
+    $array_broken = explode('/', $element);
+    $element = end($array_broken);
+  }
+
+  return $array;
+}
+
+function setImgArray($product, $prod_id){
+  // get images from db
+  $img_array = $product->getRecordImg($prod_id);
+
+  // concat folder destination and image file name
+  foreach($img_array as &$img){
+    $img = "../../images/uploads/".$img;
+  }
+
+  return $img_array;
+}

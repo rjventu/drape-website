@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
   $files = $_FILES;
 
   // files error handling
-  if($files['new']['name'][0] == ""){
+  if($files['photos']['name'][0] == ""){
     $error_msg = "Please select at least one image.";
   }
 
