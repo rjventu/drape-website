@@ -65,14 +65,14 @@
                 <hr>
                 <div class="row oit-shipping">
                   <div class="col">SHIPPING</div>
-                  <div class="col text-end">₱5000.00</div>
+                  <div class="col text-end">5000.00 PHP</div>
                 </div>
                 <hr>
 
                 <!-- Total Amount -->
                 <div class="row oit-total">
                   <div class="col">TOTAL</div>
-                  <div class="col text-end">₱2001650.00</div>
+                  <div class="col text-end">2001650.00 PHP</div>
                 </div>
                 
               </div>

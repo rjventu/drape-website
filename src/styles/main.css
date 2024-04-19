@@ -310,6 +310,7 @@ main {
 }
 .size-option {
     margin-right: 15px;
+    margin-bottom: 1rem;
 }
 .size-option input[type="radio"] {
     display: none; /* Hide the actual radio buttons */
@@ -318,7 +319,9 @@ main {
     font-size: 1.5rem;
     font-weight: 600;
     display: inline-block;
-    padding: 0.2rem 2rem;
+    /* padding: 0.2rem 2rem; */ 
+    width: 5rem;
+    text-align: center;
     background-color: #ccc;
     color: #333;
     cursor: pointer;
@@ -389,6 +392,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-transform: uppercase;
     width: 60%;
 }
 .item-link {
@@ -570,7 +574,24 @@ footer p{
 
 }
 .cart-table-item-qty {
+    align-items: center;
+    justify-content: space-between;
     text-align: center;
+    width: 14rem;
+}
+.cart-table-item-qty a{
+    text-decoration: none;
+    color: rgb(205, 205, 205);
+    transition: ease-in-out 0.2s;
+}
+.cart-table-item-qty a:hover{
+    text-decoration: none;
+    color: black;
+    transition: ease-in-out 0.2s;
+}
+.cart-table-item-qty p{
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
 }
 .cart-table-item-price {
     text-align: right;
@@ -579,6 +600,7 @@ footer p{
     font-size: 24px;
 }
 .cart-table-item-name {
+    text-transform: uppercase;
     padding-left: 2rem;
 }
 .cart-table-total {

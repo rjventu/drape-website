@@ -12,7 +12,7 @@ $cart_pages = array(
 );
 $client_pages = array(
   "client-orders.php",
-  "client-view-orders.php"
+  "client-orders-view.php"
 );
 $admin_pages = array(
   "admin-inventory.php",
