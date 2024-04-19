@@ -55,24 +55,36 @@ if(!isset($_SESSION["custId"]) && !isset($_SESSION["adminId"])){
                         <td></td>
                         <td class="cart-table-item-name">ITEM NAME</td>
                         <td class="cart-table-item-qty">QUANTITY</td>
-                        <td class="cart-table-item-price">PRICE</td>
+                        <td class="cart-table-item-price">SUBTOTAL</td>
                     </tr>
                     <tr class="cart-table-item">
                         <td class="cart-item-img"><img src="../../images/bao-bao-mlKE8dEMc_8-unsplash.jpg" alt=""></td>
                         <td class="cart-table-item-name">WHITE VOGUE TEE</td>
-                        <td class="cart-table-item-qty">1</td>
+                        <td class="cart-table-item-qty d-flex">
+                            <a href="cart.php?id=?"><i class="fi fi-rr-minus-small"></i></a> 
+                            <p>1</p>
+                            <a href="cart.php?id=?"><i class="fi fi-rr-plus-small"></i></a> 
+                        </td>
                         <td class="cart-table-item-price">1000PHP</td>
                     </tr>
                     <tr class="cart-table-item">
                         <td class="cart-item-img"><img src="../../images/don-delfin-almonte-ebTNU_YTWgc-unsplash.jpg" alt=""></td>
                         <td class="cart-table-item-name">BLACK EARTH MARA TEE</td>
-                        <td class="cart-table-item-qty">1</td>
+                        <td class="cart-table-item-qty d-flex">
+                            <a href="cart.php?id=?"><i class="fi fi-rr-minus-small"></i></a> 
+                            <p>1</p>
+                            <a href="cart.php?id=?"><i class="fi fi-rr-plus-small"></i></a> 
+                        </td>
                         <td class="cart-table-item-price">650PHP</td>
                     </tr>
                     <tr class="cart-table-item">
                         <td class="cart-item-img"><img src="../../images/faith-yarn-jX2cntCbrAo-unsplash.jpg" alt=""></td>
                         <td class="cart-table-item-name">LIGHT GREEN FROGUN TEE</td>
-                        <td class="cart-table-item-qty">99</td>
+                        <td class="cart-table-item-qty d-flex">
+                            <a href="cart.php?id=?"><i class="fi fi-rr-minus-small"></i></a> 
+                            <p>99</p>
+                            <a href="cart.php?id=?"><i class="fi fi-rr-plus-small"></i></a> 
+                        </td>
                         <td class="cart-table-item-price">2000000PHP</td>
                     </tr>
                     <tr>
