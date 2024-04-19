@@ -300,6 +300,7 @@ button {
 /* [5] GALLERY */
 .featured {
     margin-block: 4rem;
+    height: 100%;
 }
 .featured-title {
     margin-bottom: 2rem;
@@ -312,11 +313,12 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-    height: 25rem;
+    overflow: hidden;
 }
 .featured-item {
     position: relative;
     overflow: hidden;
+    height: 25rem;
 }
 .featured-item img {
     width: 100%;
