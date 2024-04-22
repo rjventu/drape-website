@@ -7,14 +7,14 @@ require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
 if(isset($_POST["send"])) {
-    $recipientEmail = 'drapeclothing111@gmail.com'; 
+    $recipientEmail = 'drapeclothing11.inq@gmail.com'; 
 
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'drapeclothing111@gmail.com';
+    $mail->Username = 'drapeclothing11.inq@gmail.com';
     $mail->Password = 'bbav jmtl utuk dddm';
     $mail->SMTPSecure = 'ssl'; 
     $mail->Port = 465;
