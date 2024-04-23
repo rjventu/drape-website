@@ -1,46 +1,6 @@
-<?php
-session_start();
+<?php session_start();?>
 
-// Database connection
-$servername = "localhost";
-$username = "sunicozx";
-$password = "hello123";
-$dbname = "drape1";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve product ID from URL parameter
-if (isset($_GET['prod_id'])) {
-    $product_id = $_GET['prod_id'];
-
-    // Prepare and execute query to fetch product details
-    $sql = "SELECT * FROM product WHERE prod_id = $product_id";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Output data of each row
-        while ($row = $result->fetch_assoc()) {
-            // Store product details in variables
-            $prod_name = $row['prod_name'];
-            $prod_price = $row['prod_price'];
-            $prod_description = $row['prod_description'];
-            $prod_image = $row['prod_image'];
-            
-        }
-    } else {
-        echo "Product not found";
-    }
-} else {
-    echo "Product ID not specified";
-}
-
-$conn->close();
-?>
+<?php include("includes/prod-desc.inc.php")?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,14 +23,17 @@ $conn->close();
                     <div id="prodCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="../../images/giacomo-lucarini--pOMjxrXBIY-unsplash.jpg" alt="Main image">
+                                <img class="d-block w-100" src="../../images/uploads/<?php echo $prod_image?>" alt="<?php echo $prod_name?> image">
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../images/bao-bao-mlKE8dEMc_8-unsplash.jpg" alt="Second image">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../images/don-delfin-almonte-ebTNU_YTWgc-unsplash.jpg" alt="Third image">
-                            </div>
+                            <?php
+                            foreach($img_array as $img){
+                                echo "
+                                <div class='carousel-item'>
+                                    <img class='d-block w-100' src='../../images/uploads/".$img."' alt='<?php echo $prod_name?> image'>
+                                </div>
+                                ";
+                            }
+                            ?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#prodCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
