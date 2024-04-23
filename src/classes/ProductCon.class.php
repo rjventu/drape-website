@@ -20,6 +20,16 @@ class ProductController extends Product{
     return $result;
   }
 
+  public function getTableCat($cat_name){
+    $result = $this->readProductTableCat($cat_name);
+    return $result;
+  }
+
+  public function getTableFeatured(){
+    $result = $this->readProductTableFeatured();
+    return $result;
+  }
+
   public function getSearchTable($phrase){
     $result = $this->searchProductTable($phrase);
     return $result;
@@ -32,6 +42,11 @@ class ProductController extends Product{
 
   public function getRecordImg($prod_id){
     $result = $this->readProductImg($prod_id);
+    return $result;
+  }
+
+  public function getRecordImgThumb($prod_id){
+    $result = $this->readProductImgThumb($prod_id);
     return $result;
   }
   

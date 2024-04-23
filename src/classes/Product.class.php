@@ -14,6 +14,32 @@ class Product extends Database{
     return $stmt;
   }
 
+  protected function readProductTableCat($cat_name){
+    $query = 'SELECT * FROM product WHERE cat_name = ?';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($cat_name))){
+      $stmt = null;
+      header("location: ../index.php?error=stmtfailed");
+      exit();
+    }
+
+    return $stmt;
+  }
+
+  protected function readProductTableFeatured(){
+    $query = 'SELECT * FROM product LIMIT 4';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute()){
+      $stmt = null;
+      header("location: ../index.php?error=stmtfailed");
+      exit();
+    }
+
+    return $stmt;
+  }
+
   protected function searchProductTable($phrase){
 
     $phrase = "%".trim($phrase," ")."%";    
@@ -65,6 +91,27 @@ class Product extends Database{
     }
 
     return $img_array;
+  }
+
+  protected function readProductImgThumb($prod_id){
+
+    $query = 'SELECT * FROM product_gallery WHERE prod_id = ? LIMIT 1;';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($prod_id))){
+      $stmt = null;
+      header("location: ../index.php?error=stmtfailed");
+      exit();
+    }
+
+    $result = $stmt;
+    $img_thumb = "";
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+      $img_thumb = $row['img_name'];
+    }
+
+    return $img_thumb;
   }
 
   protected function readProductStock($prod_id){
