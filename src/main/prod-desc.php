@@ -1,4 +1,46 @@
-<?php session_start();?>
+<?php
+session_start();
+
+// Database connection
+$servername = "localhost";
+$username = "sunicozx";
+$password = "hello123";
+$dbname = "drape1";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve product ID from URL parameter
+if (isset($_GET['prod_id'])) {
+    $product_id = $_GET['prod_id'];
+
+    // Prepare and execute query to fetch product details
+    $sql = "SELECT * FROM product WHERE prod_id = $product_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+            // Store product details in variables
+            $prod_name = $row['prod_name'];
+            $prod_price = $row['prod_price'];
+            $prod_description = $row['prod_description'];
+            $prod_image = $row['prod_image'];
+            
+        }
+    } else {
+        echo "Product not found";
+    }
+} else {
+    echo "Product ID not specified";
+}
+
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,14 +84,14 @@
                 </div>
 
                 <div class="prod-desc-text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima veritatis odio vitae tempora, tenetur velit adipisci placeat! Delectus nemo necessitatibus ipsa tenetur tempore molestiae, ea dicta assumenda. Officia, molestias dolore.</p>
+                    <p><?php echo $prod_description; ?></p>
                 </div>
             </div>
             <!-- PROD INFO + CART -->
             <div class="prod-right">
                 <div class="prod-info-text">
-                    <h1 class="prod-title">OKAY, BOOMER TEE</h1>
-                    <h3 class="prod-price">400PHP</h3>
+                    <h1 class="prod-title"><?php echo $prod_name; ?></h1>
+                    <h3 class="prod-price"><?php echo $prod_price; ?></h3>
                 </div>
                 <div class="prod-size-sel">
                     <h3 class="prod-size-header">SIZE</h3>

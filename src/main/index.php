@@ -39,7 +39,7 @@
                             <h2>LOOK ON WITH ENVY AND HATE</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=1" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                             <h2>LIET-KYNES</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=2" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                             <h2>PERDOT SHIRT NEE ARAK</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=3" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <h2>THE SAND WORM, GOD OF SAND</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=4" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>

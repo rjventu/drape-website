@@ -38,7 +38,7 @@
                             <h2>LOOK ON WITH ENVY AND HATE</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=5" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                             <h2>LIET-KYNES</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=6" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             <h2>PERDOT SHIRT NEE ARAK</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=7" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
                     <img src="../../images/don-delfin-almonte-ebTNU_YTWgc-unsplash.jpg" alt="Item 4">
                     <div class="item-overlay">
                         <div class="item-desc">
-                            <h3>*1200PHP</h3>
+                            <h3>1200PHP</h3>
                             <h2>THE SAND WORM, GOD OF SAND</h2>
                         </div>
                         <div class="item-link">
-                            <a href="prod-desc.php" class="btn-gallery">></a>
+                            <a href="prod-desc.php?prod_id=8" class="btn-gallery">></a>
                         </div>
                     </div>
                 </div>
