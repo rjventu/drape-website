@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 04:17 PM
+-- Generation Time: Apr 23, 2024 at 03:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,8 +20,6 @@ SET time_zone = "+08:00";
 --
 -- Database: `drape`
 --
-CREATE DATABASE IF NOT EXISTS `drape` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `drape`;
 
 -- --------------------------------------------------------
 
@@ -130,8 +128,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prod_id`, `prod_name`, `prod_price`, `prod_description`, `cat_name`) VALUES
-(1, 'Smiley & Daisy Tee - PINK', 549.00, 'Trendy tee in pink', 'Shirts'),
-(2, 'Smiley & Daisy Hoodie - BROWN', 599.00, 'Trendy and comfy hoodie ', 'Hoodies'),
+(1, 'Smiley & Daisy Hoodie - Brown', 599.00, 'Trendy and comfy hoodie in brown', 'Hoodies'),
+(2, 'Smiley & Daisy Tee - Pink', 549.00, 'Trendy tee in pink', 'Shirts'),
 (3, 'Smiley & Daisy Cap - Pink', 249.00, 'Trendy cap in pink', 'Accessories');
 
 -- --------------------------------------------------------
