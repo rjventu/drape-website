@@ -13,4 +13,4 @@
 7. Select 'New' on the sidebar and in the 'Create New Database' field, type in a name for the Drape database.
 8. Get the *drape.sql* file and drag it to the phpmyadmin page to upload the database.
 9. Type *localhost/drape-website/src/main* into the browser.
-10. It should work lol
+10. The website should load and function correctly.
