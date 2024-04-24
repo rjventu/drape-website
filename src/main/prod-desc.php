@@ -1,5 +1,7 @@
 <?php session_start();?>
 
+<?php include("includes/prod-desc.inc.php")?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +23,17 @@
                     <div id="prodCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="../../images/giacomo-lucarini--pOMjxrXBIY-unsplash.jpg" alt="Main image">
+                                <img class="d-block w-100" src="../../images/uploads/<?php echo $prod_image?>" alt="<?php echo $prod_name?> image">
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../images/bao-bao-mlKE8dEMc_8-unsplash.jpg" alt="Second image">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../images/don-delfin-almonte-ebTNU_YTWgc-unsplash.jpg" alt="Third image">
-                            </div>
+                            <?php
+                            foreach($img_array as $img){
+                                echo "
+                                <div class='carousel-item'>
+                                    <img class='d-block w-100' src='../../images/uploads/".$img."' alt='<?php echo $prod_name?> image'>
+                                </div>
+                                ";
+                            }
+                            ?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#prodCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,14 +47,14 @@
                 </div>
 
                 <div class="prod-desc-text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima veritatis odio vitae tempora, tenetur velit adipisci placeat! Delectus nemo necessitatibus ipsa tenetur tempore molestiae, ea dicta assumenda. Officia, molestias dolore.</p>
+                    <p><?php echo $prod_description; ?></p>
                 </div>
             </div>
             <!-- PROD INFO + CART -->
             <div class="prod-right">
                 <div class="prod-info-text">
-                    <h1 class="prod-title">OKAY, BOOMER TEE</h1>
-                    <h3 class="prod-price">400PHP</h3>
+                    <h1 class="prod-title"><?php echo $prod_name; ?></h1>
+                    <h3 class="prod-price"><?php echo $prod_price; ?></h3>
                 </div>
                 <div class="prod-size-sel">
                     <h3 class="prod-size-header">SIZE</h3>

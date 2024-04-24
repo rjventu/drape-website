@@ -21,32 +21,33 @@
           <div class="row">
             <div class="col-md-7">
               <!-- FORM -->
-              <form>
+              <form method="post" action="send.php">
                 <div class="row">
                   <div class="form-group col">
-                    <input type="text" class="form-control" placeholder="First name" required>
+                    <input type="text" class="form-control" name="first_name" placeholder="First name" required>
                   </div>
                   <div class="form-group col">
-                    <input type="text" class="form-control" placeholder="Last name" required>
+                    <input type="text" class="form-control" name="last_name" placeholder="Last name" required>
                   </div>
                 </div>
   
                 <div class="row mt-4">
                   <div class="form-group col">
-                      <input type="email" class="form-control" placeholder="Email address" required>
+                      <input type="email" class="form-control" name="email" placeholder="Email address" required>
                   </div>
                 </div>
   
                 <div class="row mt-4">
                   <div class="col">
                     <div class="form-group">
-                      <textarea class="form-control" rows="6" maxlength="2000" placeholder="Type your message here" required></textarea>
+                      <textarea class="form-control" name="message" rows="6" maxlength="2000" placeholder="Type your message here" required></textarea>
                     </div>
                   </div>
                 </div>
                 
                 <div class="mt-4 d-flex justify-content-center">
-                    <a href="#" class="btn-black">SEND ></a>
+                <button type="submit" name="send" class="btn-black">SEND ></button>
+
                 </div>
               </form>
   
