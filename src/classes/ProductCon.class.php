@@ -55,6 +55,11 @@ class ProductController extends Product{
     return $result;
   }
 
+  public function getRecordStockQty($prod_id, $stock_size){
+    $result = $this->readProductStockQty($prod_id, $stock_size);
+    return $result;
+  }
+
   public function addProduct(){
     if($this->invalidName()){
       return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";

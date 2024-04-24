@@ -1,5 +1,7 @@
 <?php session_start();?>
 
+<?php require "includes/functions.php"?>
+
 <?php include("includes/prod-desc.inc.php")?>
 
 <!DOCTYPE html>
@@ -59,30 +61,66 @@
                 <div class="prod-size-sel">
                     <h3 class="prod-size-header">SIZE</h3>
                     <div class="prod-size-options">
-                        <label for="size-xs" class="size-option">
-                            <input type="radio" id="size-xs" name="size" value="S">
-                            <span>XS</span>
-                        </label>
-                        <label for="size-s" class="size-option">
-                            <input type="radio" id="size-s" name="size" value="S">
-                            <span>S</span>
-                        </label>
-                        <label for="size-m" class="size-option">
-                            <input type="radio" id="size-m" name="size" value="M">
-                            <span>M</span>
-                        </label>
-                        <label for="size-l" class="size-option">
-                            <input type="radio" id="size-l" name="size" value="L">
-                            <span>L</span>
-                        </label>
-                        <label for="size-xl" class="size-option">
-                            <input type="radio" id="size-xl" name="size" value="L">
-                            <span>XL</span>
-                        </label>
-                        <label for="size-xxl" class="size-option">
-                            <input type="radio" id="size-xxl" name="size" value="L">
-                            <span>XXL</span>
-                        </label>
+                        <?php
+                            if(getStockQty($prod_id, "XS", $product)){
+                                ?>
+                                <label for="size-xs" class="size-option">
+                                    <input type="radio" id="size-xs" name="size" value="XS">
+                                    <span>XS</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
+                        <?php
+                            if(getStockQty($prod_id, "S", $product)){
+                                ?>
+                                <label for="size-s" class="size-option">
+                                    <input type="radio" id="size-s" name="size" value="S">
+                                    <span>S</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
+                        <?php
+                            if(getStockQty($prod_id, "M", $product)){
+                                ?>
+                                <label for="size-m" class="size-option">
+                                    <input type="radio" id="size-m" name="size" value="M">
+                                    <span>M</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
+                        <?php
+                            if(getStockQty($prod_id, "L", $product)){
+                                ?>
+                                <label for="size-l" class="size-option">
+                                    <input type="radio" id="size-l" name="size" value="L">
+                                    <span>L</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
+                        <?php
+                            if(getStockQty($prod_id, "XL", $product)){
+                                ?>
+                                <label for="size-xl" class="size-option">
+                                    <input type="radio" id="size-xl" name="size" value="XL">
+                                    <span>XL</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
+                        <?php
+                            if(getStockQty($prod_id, "XXL", $product)){
+                                ?>
+                                <label for="size-xxl" class="size-option">
+                                    <input type="radio" id="size-xxl" name="size" value="XXL">
+                                    <span>XXL</span>
+                                </label>
+                                <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <a href="cart.php" class="btn-black">ADD TO CART ></a>
