@@ -1,21 +1,16 @@
 <?php
 
+session_start();
+
 $servername = "localhost";
-$username = "sunicozx";
-$password = "hello123"; 
+$username = "root";
+$password = ""; 
 $dbname = "drape";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "ALTER TABLE order_details MODIFY order_status VARCHAR(10) NOT NULL DEFAULT 'Pending'";
-if ($conn->query($sql) === TRUE) {
-    echo "Column modified successfully";
-} else {
-    echo "Error modifying column: " . $conn->error;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST["phone"];
     $email = $_POST["email"];
     $other = $_POST["other"];
-    $custId = 1;
+    $custId = $_SESSION["custId"];
+    $order_status = "Pending";
 
     $checkCustomerSql = "SELECT 1 FROM customer WHERE cust_id = ?";
     $checkCustomerStmt = $conn->prepare($checkCustomerSql);
@@ -37,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkCustomerResult = $checkCustomerStmt->get_result();
 
     if ($checkCustomerResult->num_rows > 0) {
-        $sql = "INSERT INTO order_details (cust_id, order_fname, order_lname, order_phone, order_address, order_region, order_zip, order_remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO order_details (cust_id, order_status, order_fname, order_lname, order_phone, order_address, order_region, order_zip, order_remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("isssssss", $custId, $firstName, $lastName, $phone, $address, $region, $zipCode, $other);
+        $stmt->bind_param("issssssss", $custId, $order_status, $firstName, $lastName, $phone, $address, $region, $zipCode, $other);
 
         if ($stmt->execute()) {
             echo "New record created successfully";
@@ -54,10 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
     header("Location: checkout.php");
+    $conn->close();
     exit;
 } else {
     header("Location: checkout.php");
+    $conn->close();
     exit;
 }
-$conn->close();
-?>
+

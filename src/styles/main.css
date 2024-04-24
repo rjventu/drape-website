@@ -669,6 +669,9 @@ hr { /* Line under cart items */
     flex-direction: column;
     gap: 1rem;
 }
+.checkout-receipt{
+    max-width: 50%;
+}
 .checkout-table-title {
     font-weight: 800;
 }

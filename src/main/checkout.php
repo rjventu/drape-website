@@ -51,7 +51,7 @@ if(!isset($_SESSION["custId"])){
                     <div class="form-group">
                         <textarea id="other" name="other" placeholder="Anything else to add?" class="form-control" rows="5" maxlength="500"></textarea>
                     </div>
-                    <div class="check-below">
+                    <div class="check-below m-0 mt-3 p-0 d-flex justify-content-start">
                         <button type="submit" class="btn-black">PLACE ORDER ></button>
                     </div>
                 </form>                    
