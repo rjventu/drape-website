@@ -24,7 +24,7 @@ if(!isset($_SESSION["custId"])){
         <section class="checkout-form-wrapper">
             <h1 class="checkout-form-title">CHECKOUT</h1>
             <div>
-                <form class="checkout-form-fields" action="/submit-form" method="post">
+                <form id="checkoutForm" class="checkout-form-fields" action="checkout-form.php" method="post" onsubmit="return showOrderPlacedMessage();">
                     <div class="form-flnames">
                         <div class="form-group">
                             <input type="text" id="first-name" placeholder="First name" name="first-name" class="form-control" required>
@@ -43,7 +43,7 @@ if(!isset($_SESSION["custId"])){
                         <input type="text" id="zip-code" placeholder="ZIP code" name="zip-code" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="phone" placeholder="Phone number" name="phone" class="form-control" required pattern="[0-9]{10}">
+                        <input type="text" id="phone" placeholder="Phone number" name="phone" class="form-control" required pattern="[0-9]{11}">
                     </div>
                     <div class="form-group">
                         <input type="email" id="email" placeholder="Email address" name="email" class="form-control" required>
@@ -51,10 +51,26 @@ if(!isset($_SESSION["custId"])){
                     <div class="form-group">
                         <textarea id="other" name="other" placeholder="Anything else to add?" class="form-control" rows="5" maxlength="500"></textarea>
                     </div>
+                    <div class="check-below">
+                        <button type="submit" class="btn-black">PLACE ORDER ></button>
+                    </div>
                 </form>                    
             </div>
         </section>
 
+        <script>
+        function showOrderPlacedMessage() {
+        var form = document.getElementById('checkoutForm');
+
+        if (form.checkValidity()) {
+            alert("The order has been placed. Thank you for shopping!");
+        return true;
+            } else {
+            return false;
+            }
+        }
+        </script>
+        
         <section class="checkout-receipt">
             <div class="checkout-wrapper">
                 <div class="checkout-wrapper-inside" >
@@ -97,9 +113,6 @@ if(!isset($_SESSION["custId"])){
                                 <td class="checkout-table-total-price">2006650PHP</td>
                             </tr>
                         </table>
-                    </div>
-                    <div class="check-below">
-                        <button type="submit" class="btn-black">PLACE ORDER ></button>
                     </div>
                 </div>
             </div>
