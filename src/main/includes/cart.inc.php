@@ -80,6 +80,7 @@ if(isset($_POST["add-to-cart"])){
         }else{ 
             //executes on new product
             $cart->addCartItem();
+            header("location: cart.php");
         }
     }
 }
