@@ -135,7 +135,7 @@ class Product extends Database{
     return $stock_array;
   }
 
-  protected function readProductStockQty($prod_id, $stock_size){
+  protected function readProductStockRecord($prod_id, $stock_size){
 
     $query = 'SELECT * FROM product_stock WHERE prod_id = ? AND stock_size = ?;';
     $stmt = $this->connect()->prepare($query);
@@ -146,14 +146,21 @@ class Product extends Database{
       exit();
     }
 
-    $result = $stmt;
-    $stmt = null;
+     return $stmt;
+  } 
 
-    while($row = $result->fetch(PDO::FETCH_ASSOC)){
-      $stock_qty = $row['stock_qty'];
+  protected function readProductStockRecordFromID($stock_id){
+
+    $query = 'SELECT * FROM product_stock WHERE stock_id = ?;';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($stock_id))){
+      $stmt = null;
+      header("location: ../main/index.php?error=stmtfailed");
+      exit();
     }
 
-    return $stock_qty;
+     return $stmt;
   } 
 
   protected function createProduct($prod_name, $prod_price, $prod_description, $cat_name){

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 04:10 AM
+-- Generation Time: Apr 25, 2024 at 10:33 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,7 @@ INSERT INTO `admin` (`admin_id`, `admin_user`, `admin_email`, `admin_pass`) VALU
 --
 
 CREATE TABLE `cart_item` (
+  `cart_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `stock_id` int(11) NOT NULL,
@@ -106,7 +107,8 @@ CREATE TABLE `order_item` (
   `item_name` int(255) NOT NULL,
   `item_price` decimal(5,2) NOT NULL,
   `item_size` varchar(10) NOT NULL,
-  `item_qty` int(10) NOT NULL
+  `item_qty` int(10) NOT NULL,
+  `order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -506,6 +508,7 @@ ALTER TABLE `admin`
 -- Indexes for table `cart_item`
 --
 ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`cart_id`),
   ADD KEY `prod_cart_fk` (`prod_id`),
   ADD KEY `cust_cart_fk` (`cust_id`),
   ADD KEY `stock_cart_fk` (`stock_id`);
@@ -527,7 +530,8 @@ ALTER TABLE `order_details`
 -- Indexes for table `order_item`
 --
 ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `order_item_fk` (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -558,6 +562,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -604,6 +614,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_cust_fk` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`);
+
+--
+-- Constraints for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `order_item_fk` FOREIGN KEY (`order_id`) REFERENCES `order_details` (`order_id`);
 
 --
 -- Constraints for table `product_gallery`

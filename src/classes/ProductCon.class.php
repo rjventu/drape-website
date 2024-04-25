@@ -55,8 +55,13 @@ class ProductController extends Product{
     return $result;
   }
 
-  public function getRecordStockQty($prod_id, $stock_size){
-    $result = $this->readProductStockQty($prod_id, $stock_size);
+  public function getRecordStockRecord($prod_id, $stock_size){
+    $result = $this->readProductStockRecord($prod_id, $stock_size);
+    return $result;
+  }
+
+  public function getRecordStockFromID($stock_id){
+    $result = $this->readProductStockRecordFromID($stock_id);
     return $result;
   }
 
