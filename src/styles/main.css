@@ -630,6 +630,14 @@ hr { /* Line under cart items */
     margin-right: 2rem;
     margin-top: 0.6rem;
 }
+.cart-table-item-name a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s ease-in-out;
+}
+.cart-table-item-name a:hover{
+    color:#ccc;
+}
 
 /* [11] CHECKOUT */
 .main-checkout {
