@@ -5,6 +5,26 @@ if(!isset($_SESSION["custId"])){
     header("location: login.php");
 }
 
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "drape";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$custId = $_SESSION["custId"];
+$sql = "SELECT ci.*, p.prod_name, p.prod_price FROM cart_item ci
+        INNER JOIN product p ON ci.prod_id = p.prod_id
+        WHERE ci.cust_id = $custId";
+$result = mysqli_query($conn, $sql);
+
+$totalPrice = 0;
+$shippingCost = 60;
+
 ?>
 
 <!DOCTYPE html>
@@ -81,43 +101,37 @@ if(!isset($_SESSION["custId"])){
                                 <td class="checkout-table-item-qty">QTY</td>
                                 <td class="checkout-table-item-price">SUBTOTAL</td>
                             </tr>
+                            <?php 
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $subtotal = $row['prod_price'] * $row['item_qty'];
+                                $totalPrice += $subtotal;
+                            ?>
                             <tr class="checkout-table-item">
-                                <td class="checkout-table-item-name">WHITE VOGUE TEE</td>
-                                <td class="checkout-table-item-qty">1</td>
-                                <td class="checkout-table-item-price">1000PHP</td>
+                                <td class="checkout-table-item-name"><?php echo $row['prod_name']; ?></td>
+                                <td class="checkout-table-item-qty"><?php echo $row['item_qty']; ?></td>
+                                <td class="checkout-table-item-price"><?php echo $subtotal; ?> PHP</td>
                             </tr>
-                            <tr class="checkout-table-item">
-                                <td class="checkout-table-item-name">BLACK EARTH MARA TEE</td>
-                                <td class="checkout-table-item-qty">1</td>
-                                <td class="checkout-table-item-price">650PHP</td>
-                            </tr>
-                            <tr class="checkout-table-item">
-                                <td class="checkout-table-item-name">LIGHT GREEN FROGUN TEE</td>
-                                <td class="checkout-table-item-qty">99</td>
-                                <td class="checkout-table-item-price">2000000PHP</td>
-                            </tr>
+                            <?php } ?>
                             <tr>
                                 <td colspan="4"><hr></td>
                             </tr>
                             <tr>
-                                <td class="checkout-shipping">SHIPPING</td>
-                                <td></td>
-                                <td class="checkout-shipping-cost">5000PHP</td>
+                                <td colspan="2" class="checkout-shipping">SHIPPING</td>
+                                <td class="checkout-shipping-cost"><?php echo $shippingCost; ?> PHP</td>
                             </tr>
                             <tr>
                                 <td colspan="4"><hr></td>
                             </tr>
                             <tr>    
-                                <td class="checkout-table-total">TOTAL</td>
-                                <td></td>
-                                <td class="checkout-table-total-price">2006650PHP</td>
+                                <td colspan="2" class="checkout-table-total">TOTAL</td>
+                                <td class="checkout-table-total-price"><?php echo $totalPrice + $shippingCost; ?> PHP</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
-            
+ 
     </main>
 
     <!-- FOOTER -->
