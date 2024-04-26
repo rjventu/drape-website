@@ -1,6 +1,6 @@
 <?php include("includes/admin-session.inc.php")?>
 
-<?php include("include/admin-orders-view.inc.php");?>
+<?php include("includes/admin-orders-view.inc.php");?>
 
 <!DOCTYPE html>
 <html lang="en">

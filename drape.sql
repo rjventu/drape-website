@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 10:33 AM
+-- Generation Time: Apr 26, 2024 at 04:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -90,10 +90,12 @@ CREATE TABLE `order_details` (
   `order_fname` varchar(50) NOT NULL,
   `order_lname` varchar(50) NOT NULL,
   `order_phone` varchar(12) NOT NULL,
+  `order_email` varchar(50) NOT NULL,
   `order_address` varchar(255) NOT NULL,
   `order_region` varchar(255) NOT NULL,
   `order_zip` varchar(50) NOT NULL,
-  `order_remarks` varchar(500) NOT NULL
+  `order_remarks` varchar(500) NOT NULL,
+  `order_total` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,8 +106,8 @@ CREATE TABLE `order_details` (
 
 CREATE TABLE `order_item` (
   `item_id` int(11) NOT NULL,
-  `item_name` int(255) NOT NULL,
-  `item_price` decimal(5,2) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_price` decimal(8,2) NOT NULL,
   `item_size` varchar(10) NOT NULL,
   `item_qty` int(10) NOT NULL,
   `order_id` int(11) NOT NULL
@@ -120,7 +122,7 @@ CREATE TABLE `order_item` (
 CREATE TABLE `product` (
   `prod_id` int(11) NOT NULL,
   `prod_name` varchar(255) NOT NULL,
-  `prod_price` decimal(5,2) NOT NULL,
+  `prod_price` decimal(8,2) NOT NULL,
   `prod_description` varchar(500) NOT NULL,
   `cat_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

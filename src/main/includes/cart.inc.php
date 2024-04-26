@@ -6,27 +6,12 @@ include("../classes/ProductCon.class.php");
 include("../classes/Cart.class.php");
 include("../classes/CartCon.class.php");
 
+if(isset($_SESSION["custId"])){
+
 $cart = new CartController(null, $_SESSION["custId"]);
 
 // checks if cart has items
 list($empty_style, $full_style) = checkCart($cart);
-
-// // checks if cart items are still available
-// list($removed, $removed_items) = checkAvailable($cart);
-// if($removed){
-// echo
-// "
-// <script>
-//     alert(
-//     'The following items are unavailable and have been removed from your cart:";
-//     foreach($removed_items as $item){
-//         echo "\n".$item;
-//     }
-//     echo
-//     "');
-// </script>
-// ";
-// }
 
 if(isset($_POST["add-to-cart"])){
 
@@ -141,3 +126,5 @@ checkAvailable($cart);
 
 // load cart
 $result = $cart->getTable();
+
+}
