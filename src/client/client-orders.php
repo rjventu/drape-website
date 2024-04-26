@@ -5,6 +5,9 @@ if(!isset($_SESSION["custId"])){
   header("location: ../main/login.php");
 }
 ?>
+
+<?php include("includes/client-orders.inc.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,36 +57,21 @@ if(!isset($_SESSION["custId"])){
               </div>
 
               <!-- Table Body -->
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">134</p>
-                    <p class="col mb-0">45000 PHP</p>
-                    <p class="col-4 mb-0 text-end">SHIPPING</p>
+              <?php
+              while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                ?>
+                <div class="row panel-table-body mb-4">
+                  <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php?id=<?php echo $row['order_id']?>';">
+                    <div class="row">
+                      <p class="col-4 mb-0"><?php echo $row['order_id']?></p>
+                      <p class="col mb-0"><?php echo $row['order_total']?> PHP</p>
+                      <p class="col-4 mb-0 text-end"><?php echo $row['order_status']?></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">122</p>
-                    <p class="col mb-0">6000 PHP</p>
-                    <p class="col-4 mb-0 text-end">ARRIVED</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">4</p>
-                    <p class="col mb-0">250 PHP</p>
-                    <p class="col-4 mb-0 text-end">ARRIVED</p>
-                  </div>
-                </div>
-              </div>
-
+                <?php
+                }
+              ?>
             </div>
           </div>
         </section>

@@ -1,30 +1,12 @@
 <?php 
-
 session_start();
 if(!isset($_SESSION["custId"])){
     header("location: login.php");
 }
 
-$servername = "localhost";
-$username = "root";
-$password = ""; 
-$dbname = "drape";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$custId = $_SESSION["custId"];
-$sql = "SELECT ci.*, p.prod_name, p.prod_price FROM cart_item ci
-        INNER JOIN product p ON ci.prod_id = p.prod_id
-        WHERE ci.cust_id = $custId";
-$result = mysqli_query($conn, $sql);
-
-$totalPrice = 0;
-$shippingCost = 60;
-
+require "includes/functions.php";
+include("includes/mysqli.config.php");
+include("includes/checkout.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -66,13 +48,10 @@ $shippingCost = 60;
                         <input type="text" id="phone" placeholder="Phone number" name="phone" class="form-control" required pattern="[0-9]{11}">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Email address" name="email" class="form-control" required>
+                        <input type="email" id="email" placeholder="Email address" name="email" class="form-control" value="<?php echo $_SESSION['custEmail']?>" required>
                     </div>
                     <div class="form-group">
                         <textarea id="other" name="other" placeholder="Anything else to add?" class="form-control" rows="5" maxlength="500"></textarea>
-                    </div>
-                    <div class="check-below m-0 mt-3 p-0 d-flex justify-content-start">
-                        <button type="submit" class="btn-black">PLACE ORDER ></button>
                     </div>
                 </form>                    
             </div>
@@ -97,19 +76,20 @@ $shippingCost = 60;
                     <div class="checkout">
                         <table class="checkout-table">
                             <tr class="checkout-table-title">
-                                <td class="checkout-table-item-name">PRODUCT</td>
-                                <td class="checkout-table-item-qty">QTY</td>
-                                <td class="checkout-table-item-price">SUBTOTAL</td>
+                                <td class="checkout-table-item-name col-6">PRODUCT</td>
+                                <td class="checkout-table-item-qty col">QTY</td>
+                                <td class="checkout-table-item-price col">SUBTOTAL</td>
                             </tr>
                             <?php 
+                            $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_assoc($result)) {
                                 $subtotal = $row['prod_price'] * $row['item_qty'];
                                 $totalPrice += $subtotal;
                             ?>
                             <tr class="checkout-table-item">
-                                <td class="checkout-table-item-name"><?php echo $row['prod_name']; ?></td>
-                                <td class="checkout-table-item-qty"><?php echo $row['item_qty']; ?></td>
-                                <td class="checkout-table-item-price"><?php echo $subtotal; ?> PHP</td>
+                                <td class="checkout-table-item-name col"><?php echo $row['prod_name']; ?> (<?php echo $row["stock_size"]?>)</td>
+                                <td class="checkout-table-item-qty col"><?php echo $row['item_qty']; ?></td>
+                                <td class="checkout-table-item-price col"><?php echo $subtotal; ?> PHP</td>
                             </tr>
                             <?php } ?>
                             <tr>
@@ -124,10 +104,17 @@ $shippingCost = 60;
                             </tr>
                             <tr>    
                                 <td colspan="2" class="checkout-table-total">TOTAL</td>
-                                <td class="checkout-table-total-price"><?php echo $totalPrice + $shippingCost; ?> PHP</td>
+                                <td class="checkout-table-total-price"><?php echo $totalPrice + $shippingCost?> PHP</td>
                             </tr>
                         </table>
+                        <input type="number" form="checkoutForm" name="total" id="total" value="<?php echo $totalPrice + $shippingCost?>" hidden/>
                     </div>
+                    <div class="check-below mt-5">
+                        <button type="submit" form="checkoutForm" class="btn-black">PLACE ORDER ></button>
+                    </div>
+                    <!-- <div class="check-below m-0 mt-5 p-0 d-flex align-items-end justify-content-end">
+                        <button type="submit" form="checkoutForm" class="btn-black">PLACE ORDER ></button>
+                    </div> -->
                 </div>
             </div>
         </section>

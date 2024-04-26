@@ -6,22 +6,27 @@ include("../classes/ProductCon.class.php");
 include("../classes/Cart.class.php");
 include("../classes/CartCon.class.php");
 
-$cart = new CartController(null, $_SESSION["custId"], null, null);
+$cart = new CartController(null, $_SESSION["custId"]);
 
-$empty_style = "";
-$full_style = "";
+// checks if cart has items
+list($empty_style, $full_style) = checkCart($cart);
 
-$result_c = $cart->checkIfExists();
-
-while($row_c = $result_c->fetch(PDO::FETCH_NUM)){
-  $count = intval($row_c[0]); 
-}
-
-if($count == 0)
-    $full_style = "display: none";
-else
-    $empty_style = "display: none";
-
+// // checks if cart items are still available
+// list($removed, $removed_items) = checkAvailable($cart);
+// if($removed){
+// echo
+// "
+// <script>
+//     alert(
+//     'The following items are unavailable and have been removed from your cart:";
+//     foreach($removed_items as $item){
+//         echo "\n".$item;
+//     }
+//     echo
+//     "');
+// </script>
+// ";
+// }
 
 if(isset($_POST["add-to-cart"])){
 
@@ -131,5 +136,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
     }
 }
 
-// loads cart
+// checks if cart items are still available
+checkAvailable($cart);
+
+// load cart
 $result = $cart->getTable();

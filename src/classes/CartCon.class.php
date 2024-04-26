@@ -17,13 +17,12 @@ class CartController extends Cart{
     $result = $this->readCartTable($this->cust_id);
     return $result;
   }
-
-  public function getRecord(){
-    $result = $this->readCartItem($this->prod_id, $this->cust_id);
+  
+  public function getCartItem($cart_id){
+    $result = $this->readCartItem($cart_id);
     return $result;
-  
   }
-  
+
   public function getRecordFromStock(){
     $result = $this->readCartItemFromStock($this->prod_id, $this->stock_id);
     return $result;

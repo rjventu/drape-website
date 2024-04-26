@@ -3,9 +3,7 @@ session_start();
 if(!isset($_SESSION["custId"]) && !isset($_SESSION["adminId"])){
     header("location: login.php");
 }
-?>
 
-<?php 
 require "includes/functions.php";
 include("includes/cart.inc.php") ;
 ?>
@@ -70,28 +68,15 @@ include("includes/cart.inc.php") ;
                         while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
                             $cart_id = $row["cart_id"];
-
-                            // get product data
                             $prod_id = $row["prod_id"];
+                            $prod_name = $row["prod_name"];
+                            $prod_price = $row["prod_price"];
+                            $stock_size = $row["stock_size"];
+                            $item_qty = $row["item_qty"];
+                            
                             $product = new ProductController();
                             $img_thumb = $product->getRecordImgThumb($prod_id);
-                            $result_p = $product->getRecord($prod_id);
-                            while($row_p = $result_p->fetch(PDO::FETCH_ASSOC)){
-                                $prod_name = $row_p["prod_name"];
-                                $prod_price = $row_p["prod_price"];
-                            }
-
-                            // get stock data
-                            $stock_id = $row["stock_id"];
-                            $result_s = $product->getRecordStockFromID($stock_id);
-                            while($row_s = $result_s->fetch(PDO::FETCH_ASSOC)){
-                                $stock_size = $row_s["stock_size"];
-                            }
-
-                            // get item qty
-                            $item_qty = $row["item_qty"];
-
-                            // get total price
+                            
                             $sum += $prod_price;
 
                             ?>

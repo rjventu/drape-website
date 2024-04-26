@@ -20,14 +20,7 @@ function checkStock($cart, $product, $cart_id){
   $cart = new CartController();
   $result = $cart->getRecordFromID($cart_id);
   while($row = $result->fetch(PDO::FETCH_ASSOC)){
-      $stock_id = $row["stock_id"];
       $item_qty = $row["item_qty"];
-  }
-
-  // get stock_qty
-  $product = new ProductController();
-  $result = $product->getRecordStockFromID($stock_id);
-  while($row = $result->fetch(PDO::FETCH_ASSOC)){
       $stock_qty = $row["stock_qty"];
   }
 
@@ -37,4 +30,47 @@ function checkStock($cart, $product, $cart_id){
     return false;
   }
 
+}
+
+function checkCart($cart){
+  $empty_style = "";
+  $full_style = "";
+
+  $result = $cart->checkIfExists();
+
+  $row = $result->fetch(PDO::FETCH_NUM);
+  $count = intval($row[0]);   
+
+  if($count == 0)
+    $full_style = "display: none";
+  else
+    $empty_style = "display: none";
+
+  return array($empty_style, $full_style);
+}
+
+function checkAvailable($cart){
+  
+  $removed = false;
+  $removed_items = [];
+  $result = $cart->getTable();
+  while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    if($row["stock_qty"] <= 0){
+      $removed_items[] = $row["prod_name"] . " (" . $row["stock_size"] .  ")";
+      $removed = true;
+      $cart->removeCartItem($row["cart_id"]);
+    }
+  }
+
+  if($removed){
+    ?>
+    <script>
+      alert("The following items are unavailable and have been removed from your cart:\n\n<?php
+        foreach($removed_items as $item){
+          echo $item."\\n";
+        }
+      ?>");
+    </script>
+    <?php
+  }
 }

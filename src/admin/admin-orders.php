@@ -1,5 +1,14 @@
 <?php include("includes/admin-session.inc.php")?>
 
+<?php
+include("../classes/Database.class.php");
+include("../classes/Order.class.php");
+include("../classes/OrderCon.class.php");
+
+$order = new OrderController();
+$result = $order->getTable();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,17 +75,22 @@
               </div>
 
               <!-- Table Body -->
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'admin-orders-view.php';">
-                  <div class="row">
-                    <p class="col-2 mb-0">653</p>
-                    <p class="col mb-0 ptb-username">JustAPlaceholder</p>
-                    <p class="col-3 mb-0 text-end">Shipped</p>
+              <?php
+              while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                ?>
+                <div class="row panel-table-body mb-4">
+                  <div class="col ptb-contents-wrapper" onclick="window.location.href = 'admin-orders-view.php?id=<?php echo $row['order_id']?>';">
+                    <div class="row">
+                      <p class="col-2 mb-0"><?php echo $row['order_id']?></p>
+                      <p class="col mb-0 ptb-username"><?php echo $row['cust_user']?></p>
+                      <p class="col-3 mb-0 text-end"><?php echo $row['order_status']?></p>
+                    </div>
                   </div>
+                  <div class="col-1 ptb-links"><a href="admin-orders-edit.php?id=<?php echo $row['order_id']?>"><i class="fi fi-rr-pencil"></i></a></div>
                 </div>
-                <div class="col-1 ptb-links"><a href="admin-orders-edit.php"><i class="fi fi-rr-pencil"></i></a></div>
-              </div>
-
+                <?php
+                }
+              ?>
             </div>
           </div>
         </section>

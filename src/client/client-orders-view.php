@@ -1,6 +1,7 @@
 <?php session_start();?>
 
-<?php $order_status = "Pending" ?>
+<?php
+include("includes/client-orders-view.inc.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +25,18 @@
       <section class="view-order-wrapper mt-5">
         <div class="row">
 
+        <?php
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+          $order_id = $row["order_id"];
+          $order_time = $row["order_time"];
+        }
+        ?>
+
           <!-- Left Side -->
           <div class="col-7 view-order-left">
             <div class="row order-items-header">
-              <h1><strong>ORDER 134</strong></h1>
-              <h4>Date and Time</h3>
+              <h1><strong>ORDER <?php echo $order_id?></strong></h1>
+              <h4><?php echo $order_time?></h3>
             </div>
 
             <!-- Order Items Table -->
@@ -43,36 +51,33 @@
                 </div>  
 
                 <!-- Table Body -->
-                <div class="row oit-body">
-                  <div class="col-6">ITEM X</div>
-                  <div class="col-2">x1</div>
-                  <div class="col-4 text-end">₱29.99</div>
-                </div>  
-                
-                <div class="row oit-body">
-                  <div class="col-6">ITEM Y</div>
-                  <div class="col-2">x1</div>
-                  <div class="col-4 text-end">₱13.50</div>
-                </div>  
-
-                <div class="row oit-body">
-                  <div class="col-6">ITEM Z</div>
-                  <div class="col-2">x99</div>
-                  <div class="col-4 text-end">₱299.99</div>
-                </div>  
+                <?php
+                $result = $order->getRecord($order_id);
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                  $subtotal = $row["item_qty"] * $row["item_price"];
+                  ?>
+                  <div class="row oit-body">
+                    <div class="col-7"><?php echo $row["item_name"]?> (<?php echo $row["item_size"]?>)</div>
+                    <div class="col-1">x<?php echo $row["item_qty"]?></div>
+                    <div class="col-4 text-end">₱<?php echo $subtotal?></div>
+                  </div> 
+                  <?php
+                  $order_total = $row["order_total"];
+                }
+                ?>
 
                 <!-- Shipping -->
                 <hr>
                 <div class="row oit-shipping">
                   <div class="col">SHIPPING</div>
-                  <div class="col text-end">5000.00 PHP</div>
+                  <div class="col text-end"><?php echo $shippingCost?> PHP</div>
                 </div>
                 <hr>
 
                 <!-- Total Amount -->
                 <div class="row oit-total">
                   <div class="col">TOTAL</div>
-                  <div class="col text-end">2001650.00 PHP</div>
+                  <div class="col text-end"><?php echo $order_total?> PHP</div>
                 </div>
                 
               </div>
@@ -81,19 +86,44 @@
           </div>
 
           <!-- Right Side -->
+
+          <?php
+          $result = $order->getRecord($order_id);
+          $row = $result->fetch(PDO::FETCH_ASSOC);
+          
+          $cust_fullname = trim($row["order_fname"]) . " " . trim($row["order_lname"]);
+          $cust_user = $row["cust_user"];
+          $order_email = $row["order_email"];
+          $order_phone = $row["order_phone"];
+          $order_address = $row["order_address"];
+          $order_region = $row["order_region"];
+          $order_zip = $row["order_zip"];
+          $order_remarks = $row["order_remarks"];
+          $order_status = $row["order_status"];
+          ?>
           <div class="col order-details">
             <div class="row od-name">
-              <h1>Layla Customer</h1>
-              <h2>laylaconsumer</h2>
+              <h1><?php echo $cust_fullname?></h1>
+              <h2><?php echo $cust_user?></h2>
             </div>
             <div class="row od-contact">
-              <p>laylabuys@gmail.com</p>
-              <p>(+** **** **** **)</p>
+              <p><?php echo $order_email?></p>
+              <p><?php echo $order_phone?></p>
             </div>
             <div class="row od-address">
-              <p>Random st. 777, at place,</p>
-              <p>at region, at country,</p>
-              <p> plus zip code</p>
+              <p><?php echo $order_address?></p>
+              <p><?php echo $order_region?></p>
+              <p><?php echo $order_zip?></p>
+            </div>
+            <div class="row od-status mb-5">
+              <div class="form-group">
+                <div class="form-group-label d-flex">
+                  <h5><strong>REMARKS</strong></h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p><?php echo $order_remarks?></p>
+                </div>
+              </div>
             </div>
             <div class="row od-status">
               <div class="form-group">
@@ -101,7 +131,7 @@
                   <h5><strong>STATUS</strong></h5>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                  <p>Pending</p>
+                  <p><?php echo $order_status?></p>
                 </div>
               </div>
             </div>
