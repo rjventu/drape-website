@@ -28,6 +28,7 @@ class Login extends Database{
       session_start();
       $_SESSION["adminId"] = $admin[0]["admin_id"];
       $_SESSION["adminUser"] = $admin[0]["admin_user"];
+      $_SESSION["adminEmail"] = $admin[0]["admin_email"];
 
       $stmt = null;
       return "";
@@ -55,11 +56,12 @@ class Login extends Database{
         return "Error: User not found.";
       }
 
-      $admin = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       session_start();
-      $_SESSION["custId"] = $admin[0]["cust_id"];
-      $_SESSION["custUser"] = $admin[0]["cust_user"];
+      $_SESSION["custId"] = $customer[0]["cust_id"];
+      $_SESSION["custUser"] = $customer[0]["cust_user"];
+      $_SESSION["custEmail"] = $customer[0]["cust_email"];
 
       $stmt = null;
       return "";

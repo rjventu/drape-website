@@ -53,7 +53,7 @@
                 <h5>PRODUCT NAME AND COLOR</h5>
                 <h6><i>required</i></h6>
               </div>
-              <input type="text" name="prod_name" id="prod_name" class="form-control" placeholder="Graphic Tee - WHITE" required>
+              <input type="text" name="prod_name" id="prod_name" class="form-control" placeholder="Graphic Tee - White" required>
             </div>
             <div class="form-group mt-3">
               <div class="form-group-label d-flex justify-content-between">

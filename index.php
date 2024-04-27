@@ -1,9 +1,9 @@
 <?php session_start();?>
 
 <?php
-include("../classes/Database.class.php");
-include("../classes/Product.class.php");
-include("../classes/ProductCon.class.php");
+include("src/classes/Database.class.php");
+include("src/classes/Product.class.php");
+include("src/classes/ProductCon.class.php");
 
 $product = new ProductController();
 $result = $product->getTableFeatured();
@@ -13,12 +13,12 @@ $result = $product->getTableFeatured();
 <html lang="en">
 
 <!-- HEAD TAGS -->
-<?php include("../head-tags.php")?>
+<?php include("src/head-tags-index.php")?>
 
 <body>
 
     <!-- SIDEBAR -->
-    <?php include("../sidebar.php")?>
+    <?php include("src/sidebar-index.php")?>
 
     <!-- MAIN CONTENT -->
     <main>
@@ -31,7 +31,7 @@ $result = $product->getTableFeatured();
                     <p>We've got the lastest trends!</p>
                 </div>
                 <div class="hero-link">
-                    <a href="shop.php" class="btn-hero">SHOP ></a>
+                    <a href="src/main/shop.php" class="btn-hero">SHOP ></a>
                 </div>
             </div>
         </section>
@@ -45,14 +45,14 @@ $result = $product->getTableFeatured();
                     $img_thumb = $product->getRecordImgThumb($row["prod_id"]);
                     echo "
                     <div class='featured-item'>
-                        <img src='../../images/uploads/".$img_thumb."' alt='".$row["prod_name"]." Thumbnail'>
+                        <img src='images/uploads/".$img_thumb."' alt='".$row["prod_name"]." Thumbnail'>
                         <div class='item-overlay'>
                             <div class='item-desc'>
                                 <h3>".$row["prod_price"]." PHP</h3>
                                 <h2>".$row["prod_name"]."</h2>
                             </div>
                             <div class='item-link'>
-                                <a href='prod-desc.php?prod_id=".$row["prod_id"]."' class='btn-gallery'>></a>
+                                <a href='src/main/prod-desc.php?prod_id=".$row["prod_id"]."' class='btn-gallery'>></a>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ $result = $product->getTableFeatured();
     </main>
 
     <!-- FOOTER -->
-    <?php include("footer.php")?>
+    <?php include("src/main/footer-index.php")?>
     
 </body>
 

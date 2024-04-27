@@ -1,9 +1,7 @@
 <?php include("includes/admin-session.inc.php")?>
 
-<?php
-// this is just a placeholder
-$order_status = "Pending";
-?>
+<?php include("includes/admin-orders-edit.inc.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +24,33 @@ $order_status = "Pending";
       <section class="view-order-wrapper mt-5">
         <div class="row">
 
+          <div class="row status-messages mb-5 d-flex">
+            <?php  
+              if(!empty($success_msg)){ 
+              ?> 
+                <span class="alert alert-success w-25 text-center"><?php echo $success_msg; ?></span> 
+              <?php  
+              }
+              if (!empty($error_msg)){
+              ?> 
+              <span class="alert alert-danger w-25 text-center"><?php echo $error_msg; ?></span> 
+              <?php  
+              }
+            ?>
+          </div>
+
+          <?php
+          while($row = $result->fetch(PDO::FETCH_ASSOC)){
+            $order_id = $row["order_id"];
+            $order_time = $row["order_time"];
+          }
+          ?>
+
           <!-- Left Side -->
           <div class="col-7 view-order-left">
             <div class="row order-items-header">
-              <h1><strong>ORDER 134</strong></h1>
-              <h4>Date and Time</h3>
+              <h1><strong>ORDER <?php echo $order_id?></strong></h1>
+              <h4><?php echo $order_time?></h3>
             </div>
 
             <!-- Order Items Table -->
@@ -45,36 +65,33 @@ $order_status = "Pending";
                 </div>  
 
                 <!-- Table Body -->
-                <div class="row oit-body">
-                  <div class="col-6">ITEM X</div>
-                  <div class="col-2">x1</div>
-                  <div class="col-4 text-end">₱29.99</div>
-                </div>  
-                
-                <div class="row oit-body">
-                  <div class="col-6">ITEM Y</div>
-                  <div class="col-2">x1</div>
-                  <div class="col-4 text-end">₱13.50</div>
-                </div>  
-
-                <div class="row oit-body">
-                  <div class="col-6">ITEM Z</div>
-                  <div class="col-2">x99</div>
-                  <div class="col-4 text-end">₱299.99</div>
-                </div>  
+                <?php
+                $result = $order->getRecord($order_id);
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                  $subtotal = $row["item_qty"] * $row["item_price"];
+                  ?>
+                  <div class="row oit-body">
+                    <div class="col-7"><?php echo $row["item_name"]?> (<?php echo $row["item_size"]?>)</div>
+                    <div class="col-1">x<?php echo $row["item_qty"]?></div>
+                    <div class="col-4 text-end">₱<?php echo $subtotal?></div>
+                  </div> 
+                  <?php
+                  $order_total = $row["order_total"];
+                }
+                ?>
 
                 <!-- Shipping -->
                 <hr>
                 <div class="row oit-shipping">
                   <div class="col">SHIPPING</div>
-                  <div class="col text-end">₱5000.00</div>
+                  <div class="col text-end"><?php echo $shippingCost?> PHP</div>
                 </div>
                 <hr>
 
                 <!-- Total Amount -->
                 <div class="row oit-total">
                   <div class="col">TOTAL</div>
-                  <div class="col text-end">₱2001650.00</div>
+                  <div class="col text-end"><?php echo $order_total?> PHP</div>
                 </div>
                 
               </div>
@@ -83,21 +100,46 @@ $order_status = "Pending";
           </div>
 
           <!-- Right Side -->
+
+          <?php
+          $result = $order->getRecord($order_id);
+          $row = $result->fetch(PDO::FETCH_ASSOC);
+          
+          $cust_fullname = trim($row["order_fname"]) . " " . trim($row["order_lname"]);
+          $cust_user = $row["cust_user"];
+          $order_email = $row["order_email"];
+          $order_phone = $row["order_phone"];
+          $order_address = $row["order_address"];
+          $order_region = $row["order_region"];
+          $order_zip = $row["order_zip"];
+          $order_remarks = $row["order_remarks"];
+          $order_status = $row["order_status"];
+          ?>
           <div class="col order-details">
             <div class="row od-name">
-              <h1>Layla Customer</h1>
-              <h2>laylaconsumer</h2>
+              <h1><?php echo $cust_fullname?></h1>
+              <h2><?php echo $cust_user?></h2>
             </div>
             <div class="row od-contact">
-              <p>laylabuys@gmail.com</p>
-              <p>(+** **** **** **)</p>
+              <p><?php echo $order_email?></p>
+              <p><?php echo $order_phone?></p>
             </div>
             <div class="row od-address">
-              <p>Random st. 777, at place,</p>
-              <p>at region, at country,</p>
-              <p> plus zip code</p>
+              <p><?php echo $order_address?></p>
+              <p><?php echo $order_region?></p>
+              <p><?php echo $order_zip?></p>
             </div>
-            <form class="row od-status pe-5">
+            <div class="row od-status mb-5">
+              <div class="form-group">
+                <div class="form-group-label d-flex">
+                  <h5><strong>REMARKS</strong></h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p><?php echo $order_remarks?></p>
+                </div>
+              </div>
+            </div>
+            <form class="row od-status pe-5" method="post" action="admin-orders-edit.php">
               <div class="form-group">
                 <div class="form-group-label d-flex">
                   <h5><strong>CHANGE STATUS</strong></h5>
@@ -109,6 +151,7 @@ $order_status = "Pending";
                     <option value="Shipped"<?=$order_status == 'Shipped' ? ' selected="selected"' : '';?>>Shipped</option>
                     <option value="Delivered"<?=$order_status == 'Delivered' ? ' selected="selected"' : '';?>>Delivered</option>
                   </select>
+                  <input type="text" name="order_id" id="order_id" value="<?php echo $order_id?>" hidden>
                   <button type="submit" name="submit" id="submit" class="btn-black my-1" style="width:fit-content">UPDATE ></button>
                 </div>
               </div>

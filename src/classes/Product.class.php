@@ -7,7 +7,7 @@ class Product extends Database{
 
     if(!$stmt->execute()){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -20,7 +20,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($cat_name))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -33,7 +33,7 @@ class Product extends Database{
 
     if(!$stmt->execute()){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -51,7 +51,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($phrase))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -65,7 +65,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($prod_id))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -79,7 +79,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($prod_id))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -100,7 +100,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($prod_id))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -121,7 +121,7 @@ class Product extends Database{
 
     if(!$stmt->execute(array($prod_id))){
       $stmt = null;
-      header("location: ../index.php?error=stmtfailed");
+      header("location: ../main/index.php?error=stmtfailed");
       exit();
     }
 
@@ -134,6 +134,34 @@ class Product extends Database{
 
     return $stock_array;
   }
+
+  protected function readProductStockRecord($prod_id, $stock_size){
+
+    $query = 'SELECT * FROM product_stock WHERE prod_id = ? AND stock_size = ?;';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($prod_id, $stock_size))){
+      $stmt = null;
+      header("location: ../main/index.php?error=stmtfailed");
+      exit();
+    }
+
+     return $stmt;
+  } 
+
+  protected function readProductStockRecordFromID($stock_id){
+
+    $query = 'SELECT * FROM product_stock WHERE stock_id = ?;';
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($stock_id))){
+      $stmt = null;
+      header("location: ../main/index.php?error=stmtfailed");
+      exit();
+    }
+
+     return $stmt;
+  } 
 
   protected function createProduct($prod_name, $prod_price, $prod_description, $cat_name){
 

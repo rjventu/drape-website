@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 04:10 AM
+-- Generation Time: Apr 27, 2024 at 09:44 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,7 @@ INSERT INTO `admin` (`admin_id`, `admin_user`, `admin_email`, `admin_pass`) VALU
 --
 
 CREATE TABLE `cart_item` (
+  `cart_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `stock_id` int(11) NOT NULL,
@@ -89,10 +90,12 @@ CREATE TABLE `order_details` (
   `order_fname` varchar(50) NOT NULL,
   `order_lname` varchar(50) NOT NULL,
   `order_phone` varchar(12) NOT NULL,
+  `order_email` varchar(50) NOT NULL,
   `order_address` varchar(255) NOT NULL,
   `order_region` varchar(255) NOT NULL,
   `order_zip` varchar(50) NOT NULL,
-  `order_remarks` varchar(500) NOT NULL
+  `order_remarks` varchar(500) NOT NULL,
+  `order_total` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -103,10 +106,11 @@ CREATE TABLE `order_details` (
 
 CREATE TABLE `order_item` (
   `item_id` int(11) NOT NULL,
-  `item_name` int(255) NOT NULL,
-  `item_price` decimal(5,2) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_price` decimal(8,2) NOT NULL,
   `item_size` varchar(10) NOT NULL,
-  `item_qty` int(10) NOT NULL
+  `item_qty` int(10) NOT NULL,
+  `order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -118,7 +122,7 @@ CREATE TABLE `order_item` (
 CREATE TABLE `product` (
   `prod_id` int(11) NOT NULL,
   `prod_name` varchar(255) NOT NULL,
-  `prod_price` decimal(5,2) NOT NULL,
+  `prod_price` decimal(8,2) NOT NULL,
   `prod_description` varchar(500) NOT NULL,
   `cat_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -128,39 +132,39 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prod_id`, `prod_name`, `prod_price`, `prod_description`, `cat_name`) VALUES
-(1, 'Smiley & Daisy Hoodie - Brown', 599.00, 'In our latest release, it tells us to smile even in rough times. And because it\'s already Christmas time, we made a hoodie for y\'all.', 'Hoodies'),
-(2, 'Smiley & Daisy Tee - Pink', 549.00, '\"Daisy\" Tee in Pink Colorway.', 'Shirts'),
-(3, 'Smiley & Daisy Cap - Pink', 249.00, '\"Smiley & Daisy\" Cap in Pink Colorway.\r\n\"Happiness is similar to The tale of the flower and butterfly, the perfect partner brings out the best in you\"', 'Accessories'),
-(10, 'Acid Brush - Black', 549.00, 'Drape \"Acid Brush\" in a Black Colorway.', 'Shirts'),
-(11, 'Aspire to Inspire - Black', 599.00, '\"Aspire to Inspire\" Tee in Black Colorway Make a Difference in everyone\'s life. ', 'Shirts'),
-(12, 'Aspire to Inspire - White', 599.00, '\"Aspire to Inspire\" Tee in White Colorway Make a Difference in everyone\'s life. ', 'Shirts'),
-(14, 'Puff - Black', 549.00, 'Drape “BnW Collection”', 'Shirts'),
-(15, 'Puff - White', 549.00, 'Drape “BnW Collection”', 'Shirts'),
-(16, 'Blossom - White', 549.00, '\"Blossom\" Tee in White & Black Colorway. ', 'Shirts'),
-(17, 'Ride or Die Tee - Black', 549.00, '\"Ride or Die\" Collab Tee Colorway. ', 'Shirts'),
-(18, 'Ride or Die Tee - Blue', 549.00, '\"Ride or Die\" Collab Tee Colorway.', 'Shirts'),
-(19, 'Sekai Tee - White', 499.00, 'In our newest edition of style and comfort, we tap the scenic and rigid art of Japan, thus Sekai Tee was born.', 'Shirts'),
-(20, 'Sekai Tee - Black', 499.00, 'In our newest edition of style and comfort, we tap the scenic and rigid art of Japan, thus Sekai Tee was born.', 'Shirts'),
-(21, 'Kisav Collection - Beige', 549.00, 'Drape \"Kisav Collection\" puff in Beige Colorway.', 'Shirts'),
-(22, 'Kisav Collection - Fatigue', 549.00, 'Drape \"Kisav Collection\" puff in Fatigue Colorway.', 'Shirts'),
-(23, 'Simplicitee - Pink', 500.00, '\"Simplicitee\" in Pink Colorway.\r\nAmidst of Chaos, There\'s order here.', 'Shirts'),
-(24, 'Simplicitee - Cream', 500.00, '\"Simplicitee\" in Cream Colorway. Amidst of Chaos, There\'s order here.', 'Shirts'),
-(25, 'Simplicitee - White', 500.00, '\"Simplicitee\" in White Colorway. Amidst of Chaos, There\'s order here.', 'Shirts'),
-(26, 'Smiley & Daisy Tee - Light Blue', 549.00, '\"Daisy\" Tee in Light Blue Colorway.', 'Shirts'),
-(27, 'Smiley & Daisy Cap - Blue', 249.00, '\"Smiley & Daisy\" Cap in Blue Colorway.\r\n\"Happiness is similar to The tale of the flower and butterfly, the perfect partner brings out the best in you\"', 'Accessories'),
-(28, 'Simplicitee Cap - Red', 200.00, 'Amidst of Chaos, There\'s order here.', 'Accessories'),
-(29, 'Simplicitee Cap - Purple', 200.00, 'Amidst of Chaos, There\'s order here.', 'Accessories'),
-(30, 'Simplicitee Cap - Pink', 200.00, 'Amidst of Chaos, There\'s order here. \r\n', 'Accessories'),
-(31, 'Drape Keyholder - Green', 249.00, 'Drape Keyholder in Green Colorway.', 'Accessories'),
-(32, 'Drape Keyholder - White', 249.00, 'Drape Keyholder in White Colorway.', 'Accessories'),
-(33, 'Drape Keyholder - Red', 249.00, 'Drape Keyholder Red Colorway.', 'Accessories'),
-(34, 'Sekai Mask - White', 149.00, 'Drape \"Sekai Mask\" in White Colorway.', 'Accessories'),
-(35, 'Sekai Mask - Black', 149.00, 'Drape \"Sekai Mask\" in Black Colorway.', 'Accessories'),
-(36, 'All Around Facemask - Black', 100.00, 'Drape \"All Around\" Facemask in Black Colorway.', 'Accessories'),
-(37, 'All Around Facemask - White', 100.00, 'Drape \"All Around\" Facemask in White Colorway.', 'Accessories'),
-(38, 'Simplicitee Mask - Red', 120.00, 'Drape \"Simplicitee Mask\" in Red Colorway.\r\nAmidst of Chaos, There\'s order here.', 'Accessories'),
-(39, 'Simplicitee Mask - Purple', 120.00, 'Drape \"Simplicitee Mask\" in Purple Colorway.\r\nAmidst of Chaos, There\'s order here.', 'Accessories'),
-(40, 'Simplicitee Mask - Pink', 120.00, 'Drape \"Simplicitee Mask\" in Pink Colorway.\r\nAmidst of Chaos, There\'s order here.', 'Accessories');
+(1, 'Smiley & Daisy Hoodie - Brown', 599.00, 'Wrap yourself in drapery delight with this smile-inducing beige hoodie.', 'Hoodies'),
+(2, 'Smiley & Daisy Tee - Pink', 549.00, 'When cheerful charm meets street style in this pink tee, nothing could go wrong.', 'Shirts'),
+(3, 'Smiley & Daisy Cap - Pink', 249.00, 'DRAPE Pink Petal Power Cap: Blossom in style with this floral-fueled fashion statement.', 'Accessories'),
+(10, 'Acid Brush - Black', 549.00, 'Rustic meets urban. Drape meets fashion. Comfortable style statement.', 'Shirts'),
+(11, 'Aspire to Inspire - Black', 599.00, 'Swag meets luxury. Flaunt your style in this black tee.', 'Shirts'),
+(12, 'Aspire to Inspire - White', 599.00, 'Elevate your style game. In white tees, we trust.', 'Shirts'),
+(14, 'Puff - Black', 549.00, 'Uniting style worldwide. A.k.a. Mr. Worldwide.', 'Shirts'),
+(15, 'Puff - White', 549.00, 'Global fashion definition in white.', 'Shirts'),
+(16, 'Blossom - White', 549.00, 'It’s literally “heartfelt” style.', 'Shirts'),
+(17, 'Ride or Die Tee - Black', 549.00, 'Racing passion ignited.', 'Shirts'),
+(18, 'Ride or Die Tee - Blue', 549.00, 'Blaze your style trail.', 'Shirts'),
+(19, 'Sekai Tee - White', 499.00, 'Fusion of red, white, and superb style.', 'Shirts'),
+(20, 'Sekai Tee - Black', 499.00, 'Bold black, vibrant red, and timeless style.', 'Shirts'),
+(21, 'Kisav Collection - Beige', 549.00, 'Beige, bold, and, effortless comfort.', 'Shirts'),
+(22, 'Kisav Collection - Fatigue', 549.00, 'Get draped in style with this tee. Fashion forward, globally inspired.', 'Shirts'),
+(23, 'Simplicitee - Pink', 500.00, 'Blush pink tee for effortless style. Made for comfort, always dashing.', 'Shirts'),
+(24, 'Simplicitee - Cream', 500.00, 'Sunny vibes in this lemon-yellow tee. Crafted in style, radiating cool.', 'Shirts'),
+(25, 'Simplicitee - White', 500.00, 'Embrace softness in white, wear art with this DRAPE tee.', 'Shirts'),
+(26, 'Smiley & Daisy Tee - Light Blue', 549.00, 'Feeling blue never looked so good. Blossom in style with this tee.', 'Shirts'),
+(27, 'Smiley & Daisy Cap - Blue', 249.00, 'DRAPE Blue Petal Power Cap: a petal-perfect accessory for floral vibes.', 'Accessories'),
+(28, 'Simplicitee Cap - Red', 200.00, 'Turn heads in our red-hot DRAPE cap, the crown jewel of street style.', 'Accessories'),
+(29, 'Simplicitee Cap - Purple', 200.00, 'Rock royalty vibes in our purple reign DRAPE cap, fit for style monarchs.', 'Accessories'),
+(30, 'Simplicitee Cap - Pink', 200.00, 'Pretty in pink with our DRAPE cap, a blush-worthy statement for trendsetters.', 'Accessories'),
+(31, 'Drape Keyholder - Green', 249.00, 'Unlock style with DRAPE keychain, a face-forward accessory for fashion fun.', 'Accessories'),
+(32, 'Drape Keyholder - White', 249.00, 'Checker out our DRAPE keychain, a stylish essential for keys that unlock smiles. ', 'Accessories'),
+(33, 'Drape Keyholder - Red', 249.00, 'Get in check with our DRAPE keychain, adding flair to your key ensemble.', 'Accessories'),
+(34, 'Sekai Mask - White', 149.00, 'Stay covered in style with our DRAPE face mask, a fashion-forward essential for safety.', 'Accessories'),
+(35, 'Sekai Mask - Black', 149.00, 'Mask up in DRAPE style, adding flair to safety with our chic design.', 'Accessories'),
+(36, 'All Around Facemask - Black', 100.00, 'Stay sleek with DRAPE mask, a bold blend of safety and style.', 'Accessories'),
+(37, 'All Around Facemask - White', 100.00, 'Seal the style with DRAPE mask, a fashion statement for safety in black & white.', 'Accessories'),
+(38, 'Simplicitee Mask - Red', 120.00, 'Redefining elegance in fiery red. Safety meets style.', 'Accessories'),
+(39, 'Simplicitee Mask - Purple', 120.00, 'Embrace elegance in radiant purple. Fashion meets safety.', 'Accessories'),
+(40, 'Simplicitee Mask - Pink', 120.00, 'Pretty in pink, spreading joy with style.', 'Accessories');
 
 -- --------------------------------------------------------
 
@@ -506,6 +510,7 @@ ALTER TABLE `admin`
 -- Indexes for table `cart_item`
 --
 ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`cart_id`),
   ADD KEY `prod_cart_fk` (`prod_id`),
   ADD KEY `cust_cart_fk` (`cust_id`),
   ADD KEY `stock_cart_fk` (`stock_id`);
@@ -527,7 +532,8 @@ ALTER TABLE `order_details`
 -- Indexes for table `order_item`
 --
 ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `order_item_fk` (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -558,6 +564,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -604,6 +616,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_cust_fk` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`);
+
+--
+-- Constraints for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `order_item_fk` FOREIGN KEY (`order_id`) REFERENCES `order_details` (`order_id`);
 
 --
 -- Constraints for table `product_gallery`

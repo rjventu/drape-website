@@ -5,6 +5,12 @@ if(!isset($_SESSION["custId"])){
   header("location: ../main/login.php");
 }
 ?>
+
+<?php 
+require "../main/includes/functions.php";
+include("includes/client-orders.inc.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,8 +43,13 @@ if(!isset($_SESSION["custId"])){
           </div>
         </section>
 
+        <section class="panel-table-wrapper text-center" style="margin-top: 6rem;<?php echo $empty_style?>">
+          <h1>Your order history is empty.</h1>
+          <h2>Submit an order to see it here!</h2>
+        </section>
+
         <!-- TABLE -->
-        <section class="panel-table-wrapper mt-3">
+        <section class="panel-table-wrapper mt-3" style="<?php echo $full_style?>">
           <div class="row panel-table">
             <div class="col pe-0">
 
@@ -54,36 +65,22 @@ if(!isset($_SESSION["custId"])){
               </div>
 
               <!-- Table Body -->
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">134</p>
-                    <p class="col mb-0">45000 PHP</p>
-                    <p class="col-4 mb-0 text-end">SHIPPING</p>
+              <?php
+              $result = $order->getTableCust();
+              while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                ?>
+                <div class="row panel-table-body mb-4">
+                  <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php?id=<?php echo $row['order_id']?>';">
+                    <div class="row">
+                      <p class="col-4 mb-0"><?php echo $row['order_id']?></p>
+                      <p class="col mb-0"><?php echo $row['order_total']?> PHP</p>
+                      <p class="col-4 mb-0 text-end"><?php echo $row['order_status']?></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">122</p>
-                    <p class="col mb-0">6000 PHP</p>
-                    <p class="col-4 mb-0 text-end">ARRIVED</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row panel-table-body mb-4">
-                <div class="col ptb-contents-wrapper" onclick="window.location.href = 'client-orders-view.php';">
-                  <div class="row">
-                    <p class="col-4 mb-0">4</p>
-                    <p class="col mb-0">250 PHP</p>
-                    <p class="col-4 mb-0 text-end">ARRIVED</p>
-                  </div>
-                </div>
-              </div>
-
+                <?php
+                }
+              ?>
             </div>
           </div>
         </section>
