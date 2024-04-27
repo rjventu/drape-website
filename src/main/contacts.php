@@ -36,6 +36,12 @@
                       <input type="email" class="form-control" name="email" placeholder="Email address" required>
                   </div>
                 </div>
+
+                <div class="row mt-4">
+                  <div class="form-group col">
+                      <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  </div>
+                </div>
   
                 <div class="row mt-4">
                   <div class="col">
