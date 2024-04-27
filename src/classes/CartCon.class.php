@@ -18,11 +18,6 @@ class CartController extends Cart{
     return $result;
   }
   
-  public function getCartItem($cart_id){
-    $result = $this->readCartItem($cart_id);
-    return $result;
-  }
-
   public function getRecordFromStock(){
     $result = $this->readCartItemFromStock($this->prod_id, $this->stock_id);
     return $result;
@@ -30,11 +25,6 @@ class CartController extends Cart{
 
   public function getRecordFromID($cart_id){
     $result = $this->readCartItemFromID($cart_id);
-    return $result;
-  }
-
-  public function checkIfExists(){
-    $result = $this->cartExists($this->cust_id);
     return $result;
   }
 

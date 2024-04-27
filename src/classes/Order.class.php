@@ -44,6 +44,26 @@ class Order extends Database{
     return $stmt;
   }
 
+  protected function searchOrderTable($phrase){
+
+    $phrase = "%".trim($phrase)."%";    
+
+    $query = "SELECT od.*, c.cust_user 
+      FROM order_details od 
+      JOIN customer c ON od.cust_id = c.cust_id
+      WHERE CONCAT_WS(order_id, order_total, order_phone, UPPER(order_status), UPPER(order_fname), UPPER(order_lname), UPPER(order_email), UPPER(order_address), UPPER(order_region), UPPER(order_zip), UPPER(cust_user), UPPER(cust_email)) LIKE UPPER(?)";
+      
+    $stmt = $this->connect()->prepare($query);
+
+    if(!$stmt->execute(array($phrase))){
+      $stmt = null;
+      header("location: ../main/index.php?error=stmtfailed");
+      exit();
+    }
+
+    return $stmt;
+  }
+
   protected function createOrder($order_status, $order_fname, $order_lname, $order_phone, $order_address, $order_region, $order_zip, $order_remarks){
 
     $query = 'INSERT INTO order_details (cust_id, order_status, order_fname, order_lname, order_phone, order_address, order_region, order_zip, order_remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);';

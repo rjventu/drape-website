@@ -6,7 +6,10 @@ if(!isset($_SESSION["custId"])){
 }
 ?>
 
-<?php include("includes/client-orders.inc.php");?>
+<?php 
+require "../main/includes/functions.php";
+include("includes/client-orders.inc.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +43,13 @@ if(!isset($_SESSION["custId"])){
           </div>
         </section>
 
+        <section class="panel-table-wrapper text-center" style="margin-top: 6rem;<?php echo $empty_style?>">
+          <h1>Your order history is empty.</h1>
+          <h2>Submit an order to see it here!</h2>
+        </section>
+
         <!-- TABLE -->
-        <section class="panel-table-wrapper mt-3">
+        <section class="panel-table-wrapper mt-3" style="<?php echo $full_style?>">
           <div class="row panel-table">
             <div class="col pe-0">
 
@@ -58,6 +66,7 @@ if(!isset($_SESSION["custId"])){
 
               <!-- Table Body -->
               <?php
+              $result = $order->getTableCust();
               while($row = $result->fetch(PDO::FETCH_ASSOC)){
                 ?>
                 <div class="row panel-table-body mb-4">

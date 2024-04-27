@@ -52,7 +52,7 @@ include("includes/cart.inc.php") ;
         <div>
             <h1 class="cart-title">YOUR CART</h1>
             <div class="cart-none text-center py-5 my-5" style="<?php echo $empty_style?>">
-                <h1 class="pt-5">Your cart is currently empty.</h1>
+                <h1 class="pt-5">Your cart is empty.</h1>
                 <h2>Add items to your cart to see them here!</h2>
             </div>
             <div class="cart" style="<?php echo $full_style?>">
@@ -65,6 +65,7 @@ include("includes/cart.inc.php") ;
                     </tr>
                     <?php
                         $sum = 0;
+                        $result = $cart->getTable();
                         while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
                             $cart_id = $row["cart_id"];

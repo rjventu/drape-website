@@ -66,8 +66,7 @@ $result = $product->getTableFeatured();
         <section class="about">
             <h1 class="about-title">ASPIRE TO INSPIRE</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis, orci sed fermentum lacinia, metus nunc eleifend metus, ut tempus mauris tortor vel lectus. Curabitur pretium metus ipsum. Nunc id vulputate elit. Nulla dolor nibh, feugiat sit amet leo eu, vestibulum ultrices felis. Praesent in leo sapien. Nullam id mauris tincidunt, lacinia metus sit amet, aliquet nisl. Praesent et mauris eget metus placerat dapibus tincidunt eu libero. Vivamus finibus a nulla eget vulputate. Praesent in scelerisque metus.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis, orci sed fermentum lacinia, metus nunc eleifend metus, ut tempus mauris tortor vel lectus. Curabitur pretium metus ipsum. Nunc id vulputate elit. Nulla dolor nibh, feugiat sit amet leo eu, vestibulum ultrices felis. Praesent in leo sapien. Nullam id mauris tincidunt, lacinia metus sit amet, aliquet nisl. Praesent et mauris eget metus placerat dapibus tincidunt eu libero. Vivamus finibus a nulla eget vulputate. Praesent in scelerisque metus.
+            Welcome to Drape, your go-to destination for all things fashion! At Drape, we believe in the power of style to inspire and empower individuals. Our curated collection features the latest trends in clothing, accessories, and more, carefully selected to reflect your unique personality and lifestyle. With the latest trends and a seamless shopping experience, Drape is here to help you express yourself through fashion effortlessly. Join us and discover a world of style possibilities!
             </p>
         </section>
 

@@ -28,6 +28,11 @@ class OrderController extends Order{
     return $this->readOrderRecord($order_id);
   }
 
+  public function getSearchTable($phrase){
+    $result = $this->searchOrderTable($phrase);
+    return $result;
+  }
+
   public function addOrderItem(){
     return $this->createOrderItem($this->item_name, $this->item_price, $this->item_size, $this->item_qty, $this->order_id);
   }

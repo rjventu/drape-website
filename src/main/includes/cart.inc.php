@@ -11,7 +11,8 @@ if(isset($_SESSION["custId"])){
 $cart = new CartController(null, $_SESSION["custId"]);
 
 // checks if cart has items
-list($empty_style, $full_style) = checkCart($cart);
+$result = $cart->getTable();
+list($empty_style, $full_style) = checkIfEmpty($result);
 
 if(isset($_POST["add-to-cart"])){
 
@@ -123,8 +124,4 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
 // checks if cart items are still available
 checkAvailable($cart);
-
-// load cart
-$result = $cart->getTable();
-
 }

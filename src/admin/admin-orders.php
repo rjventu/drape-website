@@ -1,12 +1,23 @@
 <?php include("includes/admin-session.inc.php")?>
 
 <?php
+require "../main/includes/functions.php";
 include("../classes/Database.class.php");
 include("../classes/Order.class.php");
 include("../classes/OrderCon.class.php");
 
 $order = new OrderController();
+
+// check if orders table is empty
 $result = $order->getTable();
+list($empty_style, $full_style) = checkIfEmpty($result);
+$result = $order->getTable();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+  // search bar
+  $order = new OrderController();
+  $result = $order->getSearchTable($_POST['search_item']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,14 +54,19 @@ $result = $order->getTable();
           </div>
         </section>
 
+        <section class="panel-table-wrapper text-center" style="margin-top: 6rem;<?php echo $empty_style?>">
+          <h1>There are no orders.</h1>
+          <h2>Orders submitted by customers would appear here.</h2>
+        </section>
+
         <!-- TABLE -->
-        <section class="panel-table-wrapper">
+        <section class="panel-table-wrapper" style="<?php echo $full_style?>">
           
           <!-- Search Bar -->
           <div class="row search-row">
             <div class="col d-flex justify-content-between align-items-center">
               <div class="search-bar">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="admin-orders.php" method="post" enctype="multipart/form-data">
                   <input type="text" name="search_item" placeholder="SEARCH/FILTER...">
                   <input type="submit" name="filter" value="">
                 </form>

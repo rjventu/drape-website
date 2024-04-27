@@ -32,16 +32,13 @@ function checkStock($cart, $product, $cart_id){
 
 }
 
-function checkCart($cart){
+function checkIfEmpty($result){
   $empty_style = "";
   $full_style = "";
 
-  $result = $cart->checkIfExists();
+  $row = $result->fetch(PDO::FETCH_ASSOC);
 
-  $row = $result->fetch(PDO::FETCH_NUM);
-  $count = intval($row[0]);   
-
-  if($count == 0)
+  if(!$row)
     $full_style = "display: none";
   else
     $empty_style = "display: none";

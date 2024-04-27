@@ -17,23 +17,6 @@ class Cart extends Database{
     return $stmt;
   }
 
-  protected function readCartItem($cart_id){
-    $query = 'SELECT ci.*, p.prod_name, p.prod_price, ps.stock_size, ps.stock_qty FROM cart_item ci
-              RIGHT JOIN product p ON ci.prod_id = p.prod_id
-              RIGHT JOIN product_stock ps on ci.stock_id = ps.stock_id
-              WHERE ci.cart_id = ?;';
-    $stmt = $this->connect()->prepare($query);
-
-    if(!$stmt->execute(array($cart_id))){
-      $stmt = null;
-      header("location: index.php?error=stmtfailed");
-      exit();
-    }
-
-    return $stmt;
-  }
-
-
   protected function readCartItemFromStock($prod_id, $stock_id){
     $query = 'SELECT * FROM cart_item WHERE prod_id = ? AND stock_id = ?';
     $stmt = $this->connect()->prepare($query);
@@ -55,19 +38,6 @@ class Cart extends Database{
     $stmt = $this->connect()->prepare($query);
 
     if(!$stmt->execute(array($cart_id))){
-      $stmt = null;
-      header("location: index.php?error=stmtfailed");
-      exit();
-    }
-
-    return $stmt;
-  }
-
-  protected function cartExists($cust_id){
-    $query = 'SELECT COUNT(1) FROM cart_item WHERE cust_id = ?';
-    $stmt = $this->connect()->prepare($query);
-
-    if(!$stmt->execute(array($cust_id))){
       $stmt = null;
       header("location: index.php?error=stmtfailed");
       exit();
