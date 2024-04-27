@@ -33,9 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("isssssssssd", $cust_id, $order_status, $firstName, $lastName, $phone, $email, $address, $region, $zipCode, $other, $total);
 
     $conn->begin_transaction();
-    if ($stmt->execute()) {
-        echo "New record created successfully";
-    } else {
+    if (!$stmt->execute()){
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
     $stmt->close();
