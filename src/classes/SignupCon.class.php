@@ -19,7 +19,7 @@ class SignupController extends Signup{
       return "Error: Please complete all fields.";
     }
     if($this->invalidName()){
-      return "Error: Invalid username! Valid characters include: A-Z a-z 0-9.";
+      return "Error: Invalid username. Please limit your username to 3 to 20 alphanumeric characters and underscores.";
     }
     if($this->invalidEmail()){
       return "Error: Please input a valid email address.";
@@ -42,7 +42,7 @@ class SignupController extends Signup{
       return "Error: Please complete all fields.";
     }
     if($this->invalidName()){
-      return "Error: Invalid username. Valid characters include: A-Z a-z 0-9.";
+      return "Error: Invalid username. Please limit your username to 3 to 20 alphanumeric characters and underscores.";
     }
     if($this->invalidEmail()){
       return "Error: Please input a valid email address.";
@@ -71,11 +71,12 @@ class SignupController extends Signup{
   }
 
   private function invalidName(){
-    if(preg_match("/^[a-zA-Z0-9]$/",$this->user)){
+    if(!preg_match("/^[a-z\d_]{3,20}$/i",$this->user)){
       return true;
     }else{
       return false;
     }
+  
   }
 
   private function invalidEmail(){

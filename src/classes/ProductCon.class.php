@@ -67,7 +67,7 @@ class ProductController extends Product{
 
   public function addProduct(){
     if($this->invalidName()){
-      return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";
+      return "Error: Invalid name. Please limit the product name to 3-50 alphanumeric characters and the following special characters: <br> \ / () - &";
     }else{
       return $this->createProduct($this->prod_name, $this->prod_price, $this->prod_description, $this->cat_name);
     }
@@ -85,7 +85,7 @@ class ProductController extends Product{
 
   public function editProduct(){
     if($this->invalidName()){
-      return "Error: Invalid name! Valid characters include: a-z A-Z 0-9 \" () - ";
+      return "Error: Invalid name. Please limit the product name to 3-50 alphanumeric characters and the following special characters: <br> \ / () - &";
     }
     return $this->updateProduct($this->prod_name, $this->prod_price, $this->prod_description, $this->cat_name, $this->prod_id);
   }
@@ -114,7 +114,7 @@ class ProductController extends Product{
   // error handlers
 
   private function invalidName(){
-    if(!preg_match("/[a-zA-Z0-9 \"()-]$/",$this->prod_name)){
+    if(!preg_match("/^[a-z\d\s_\/\\&-]{3,50}$/i",$this->prod_name)){
       return true;
     }else{
       return false;
