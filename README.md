@@ -24,7 +24,7 @@ Note that you may access the admin and customer panels using the following pre-l
   + Email: admin@gmail.com
   + Password: 123
 + Customer 1 (JustACustomer)
-  + Email: customer1@gmail.com
+  + Email: customer@gmail.com
   + Password: 123
 + Customer 2 (AnotherCustomer)
   + Email: customer2@gmail.com
