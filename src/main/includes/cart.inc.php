@@ -10,10 +10,6 @@ if(isset($_SESSION["custId"])){
 
 $cart = new CartController(null, $_SESSION["custId"]);
 
-// checks if cart has items
-$result = $cart->getTable();
-list($empty_style, $full_style) = checkIfEmpty($result);
-
 if(isset($_POST["add-to-cart"])){
 
     if(!isset($_POST["size"])){
@@ -124,4 +120,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
 // checks if cart items are still available
 checkAvailable($cart);
+
+// checks if cart has items
+$result = $cart->getTable();
+list($empty_style, $full_style) = checkIfEmpty($result);
 }
